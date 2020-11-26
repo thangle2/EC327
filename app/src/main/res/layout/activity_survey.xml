@@ -13,7 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="640dp"
         android:gravity="center_horizontal"
-        android:text="Survey"
+        android:text="War"
         android:textAlignment="center"
         android:textColor="#000505"
         android:textSize="50sp"
