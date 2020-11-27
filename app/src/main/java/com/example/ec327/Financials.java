@@ -12,7 +12,7 @@ public class Financials extends User{
     float healthInsurance;
     float weeklyGroceries;
     float carPayment; // Car insurance and Payments
-    float gas;
+    float gas; //
     HashMap<String, Float> taxRates = new HashMap<String, Float>();
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
 
