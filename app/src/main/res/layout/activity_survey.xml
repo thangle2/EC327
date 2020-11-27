@@ -8,20 +8,125 @@
     tools:context=".Survey">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="300dp"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="640dp"
         android:gravity="center_horizontal"
-        android:text="War"
+        android:text="Survey"
         android:textAlignment="center"
         android:textColor="#000505"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="277dp"
+        android:layout_marginRight="277dp"
+        android:layout_marginBottom="658dp"
+        android:gravity="center_horizontal"
+        android:text="Name:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="613dp"
+        android:gravity="center_horizontal"
+        android:text="Monthly budget:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="56dp" />
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="Monthly
+                         bills:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="        Monthly
+           Subscriptions:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="       Monthly
+        Investments:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="     Weekly
+        Groceries:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="329dp" />
+
+    <TextView
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="              Weekly
+             Transportation:"
+        android:textAlignment="center"
+        android:textColor="#000505"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="374dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
