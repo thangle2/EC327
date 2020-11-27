@@ -4,129 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5fafa"
+    android:background="@drawable/custom_background_survey"
     tools:context=".Survey">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="640dp"
-        android:gravity="center_horizontal"
-        android:text="Survey"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+   <pl.droidsonroids.gif.GifImageView
+       android:id="@+id/gifmoneybank"
+       android:layout_width="wrap_content"
+       android:layout_height="250dp"
+       android:layout_marginBottom="207dp"
+       android:src="@drawable/moneybank"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="277dp"
-        android:layout_marginRight="277dp"
-        android:layout_marginBottom="658dp"
-        android:gravity="center_horizontal"
-        android:text="Name:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+   <TextView
+       android:id="@+id/textsurvey"
+       android:layout_width="390dp"
+       android:layout_height="350dp"
+       android:layout_marginEnd="3dp"
+       android:layout_marginBottom="207dp"
+       android:lineSpacingExtra="5dp"
+       android:text="This looks like your first time using Wallet Saver!\n In order to fully utilize this app, we need you to take\n a simple survey before starting."
+       android:textAlignment="center"
+       android:textColor="@color/black"
+       android:textSize="25sp"
+       android:textStyle="bold"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/gifmoneybank" />
 
-    <TextView
-        android:layout_width="60dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="613dp"
-        android:gravity="center_horizontal"
-        android:text="Monthly budget:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="56dp" />
+   <Button
+       android:id="@+id/buttonsurvey"
+       android:layout_width="300dp"
+       android:layout_height="65dp"
+       android:layout_marginTop="63dp"
+       android:layout_marginBottom="79dp"
+       android:background="@drawable/bgbtngreen"
+       android:gravity="center_horizontal"
 
-    <TextView
-        android:layout_width="60dp"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"
-        android:text="Monthly
-                         bills:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="194dp" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"
-        android:text="        Monthly
-           Subscriptions:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="239dp" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"
-        android:text="       Monthly
-        Investments:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="284dp" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"
-        android:text="     Weekly
-        Groceries:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="329dp" />
-
-    <TextView
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"
-        android:text="              Weekly
-             Transportation:"
-        android:textAlignment="center"
-        android:textColor="#000505"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="374dp" />
+       android:text="Start Survey"
+       android:textAlignment="center"
+       android:textSize="24sp"
+       app:backgroundTint="@color/teal_700"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.5"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/textsurvey" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
