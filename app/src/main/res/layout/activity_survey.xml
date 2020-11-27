@@ -127,6 +127,5 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="374dp" />
-
-
+     
 </androidx.constraintlayout.widget.ConstraintLayout>
