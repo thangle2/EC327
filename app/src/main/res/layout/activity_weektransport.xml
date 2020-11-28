@@ -5,19 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_1"
-    tools:context=".monthlybudget">
+    tools:context=".weektransport">
 
     <TextView
-        android:id="@+id/textbud"
+        android:id="@+id/texttran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monthly Budget"
+        android:text="Weekly Transportation"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.516" />
@@ -27,64 +28,63 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="49dp"
-        android:src="@drawable/single21"
-        app:layout_constraintBottom_toTopOf="@+id/textbud"
+        android:src="@drawable/single71"
+        app:layout_constraintBottom_toTopOf="@+id/texttran"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="406dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="227dp"
-        android:text="Input your monthly budget\n after tax purely from \n all sources of income\n(ex: $1000/month)"
+        android:layout_width="372dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="22dp"
+        android:text="Input your approximated weekly transportation expense"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/edittran"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/texttran" />
 
     <EditText
-        android:id="@+id/editbud"
+        android:id="@+id/edittran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
+        android:layout_marginTop="550dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="136dp"
         android:ems="15"
-        android:hint="Monthly Budget"
+        android:hint="Weekly Transportation"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonbud"
+        android:id="@+id/buttontran"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="49dp"
         android:layout_marginBottom="62dp"
+
         android:background="@drawable/bgbtngreen"
         android:gravity="center_horizontal"
-        android:text="Next"
+        android:text="Done!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:backgroundTint="#34D76A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editbud"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/edittran" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

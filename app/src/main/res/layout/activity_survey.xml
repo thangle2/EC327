@@ -48,8 +48,8 @@
 
        android:text="Start Survey"
        android:textAlignment="center"
-       android:textSize="24sp"
-       app:backgroundTint="@color/teal_700"
+       android:textSize="25sp"
+       app:backgroundTint="#FF4D9A"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"
