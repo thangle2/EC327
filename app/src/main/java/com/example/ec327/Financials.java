@@ -2,7 +2,7 @@ package com.example.ec327;
 import java.util.HashMap;
 
 public class Financials extends User{
-    float monthlyIncome;
+    float monthlyIncome;                        //input variable to contain monthly Income of the user
     float HousingCost;
     float homeInsurance = 0;
     float TotalTax;
@@ -13,7 +13,7 @@ public class Financials extends User{
     float weeklyGroceries;
     float carPayment; // Car insurance and Payments
     float gas; ///
-    HashMap<String, Float> taxRates = new HashMap<String, Float>();
+    HashMap<String, Float> staxRates = new HashMap<String, Float>();
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
 
     public float getMonthlyIncome() {
