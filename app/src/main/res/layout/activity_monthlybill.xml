@@ -41,7 +41,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="242dp"
-        android:text="Input your monthly bills (ex: Mortage, Rent, Utilities, etc)"
+        android:text="Input your monthly bills (ex: Mortgage, Rent, Insurance, Utilities, etc)"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
