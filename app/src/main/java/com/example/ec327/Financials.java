@@ -13,7 +13,7 @@ public class Financials extends User{
     float weeklyGroceries;
     float carPayment; // Car insurance and Payments
     float gas; ///
-    HashMap<String, Float> staxRates = new HashMap<String, Float>();
+    HashMap<String, Float> taxRates = new HashMap<String, Float>();
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
 
     public float getMonthlyIncome() {
