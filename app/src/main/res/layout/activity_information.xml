@@ -12,18 +12,22 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="358dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="333dp"
         android:text="Basic Information"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -39,87 +43,88 @@
         android:id="@+id/editname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
 
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="432dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="254dp"
         android:ems="15"
         android:hint="Name(Alex)"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="263dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="488dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="198dp"
         android:ems="15"
         android:hint="Age"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editname" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="227dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="557dp"
+        android:layout_marginEnd="183dp"
+        android:layout_marginBottom="151dp"
         android:entries="@array/states"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toEndOf="@+id/textStates"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editage" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textStates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="224dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="39dp"
         android:text="States:"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsurvey"
         app:layout_constraintEnd_toStartOf="@+id/state"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editage"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editage" />
 
     <Button
         android:id="@+id/buttonsurvey"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="125dp"
 
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="62dp"
         android:background="@drawable/bgbtngreen"
         android:gravity="center_horizontal"
         android:text="Next"
         android:textAlignment="center"
-        android:textSize="24sp"
-        app:backgroundTint="@color/teal_700"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:backgroundTint="#34D76A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textStates" />
+        app:layout_constraintTop_toBottomOf="@+id/state" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

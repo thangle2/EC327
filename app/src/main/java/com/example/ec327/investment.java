@@ -15,34 +15,25 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 
-public class monthlybudget extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class investment extends AppCompatActivity {
     Spinner mySpinner;
-    Button buttonbud;
+    Button buttoninv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monthlybudget);
+        setContentView(R.layout.activity_investment);
 
-        mySpinner=findViewById(R.id.state);
-        buttonbud=findViewById(R.id.buttonbud);
+        mySpinner = findViewById(R.id.state);
+        buttoninv = findViewById(R.id.buttoninv);
 
-        buttonbud.setOnClickListener(new View.OnClickListener() {
+        buttoninv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(monthlybudget.this, monthlybill.class);
+                Intent a = new Intent(investment.this, weeklygroceries.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(a);
             }
         });
-    }
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }
