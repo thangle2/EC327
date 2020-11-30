@@ -23,7 +23,9 @@ public class Survey extends AppCompatActivity {
         buttonsurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Financials  originaluser = new Financials();
                 Intent a = new Intent(Survey.this, information.class);
+                a.putExtra("userObject",originaluser);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(a);
             }

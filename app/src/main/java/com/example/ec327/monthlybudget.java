@@ -1,48 +1,59 @@
 package com.example.ec327;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.EditText;
 
-import java.lang.reflect.Array;
-
-public class monthlybudget extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-    Spinner mySpinner;
-    Button buttonbud;
-
+public class monthlybudget extends AppCompatActivity {
+    Button nextmonthlybudget,backmonthlybudget;
+    EditText editmonthlybudget;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthlybudget);
 
-        mySpinner=findViewById(R.id.state);
-        buttonbud=findViewById(R.id.buttonbud);
-
-        buttonbud.setOnClickListener(new View.OnClickListener() {
+        //constructor
+        nextmonthlybudget=findViewById(R.id.nextmonthlybudget);
+        editmonthlybudget=findViewById(R.id.editmonthlybudget);
+        backmonthlybudget=findViewById(R.id.backmonthlybudget);
+        Intent i=getIntent();
+        Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
+        if (orginaluser.getMonthlyIncome()>0){
+            editmonthlybudget.setText(Float.toString(orginaluser.getMonthlyIncome()));
+        }
+        nextmonthlybudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(monthlybudget.this, monthlybill.class);
-                a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                startActivity(a);
+                if(!editmonthlybudget.getText().toString().trim().equalsIgnoreCase("")) {
+                    orginaluser.setMonthlyIncome(Float.parseFloat(editmonthlybudget.getText().toString()));
+                    Intent a = new Intent(monthlybudget.this, monthlybill.class);
+                    a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                    a.putExtra("userObject", orginaluser);
+                    startActivity(a);
+                }
+                else{
+                    editmonthlybudget.setError("Input");
+                }
             }
         });
-    }
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-    }
+        backmonthlybudget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
+                    Intent c = new Intent(monthlybudget.this, information.class);
+                    c.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                    c.putExtra("userObject", orginaluser);
+                    startActivity(c);
+
+
+            }
+        });
     }
 }
