@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EC327">
-        <activity android:name=".surveryresultinformation"></activity>
+        <activity android:name=".surveyresultsubscription"></activity>
+        <activity android:name=".surveryresultinformation" />
         <activity android:name=".loadingsurvey" />
         <activity android:name=".surveyresult" />
         <activity android:name=".monthlybill" />
@@ -24,7 +25,8 @@
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.EC327.NoActionBar" />
         <activity android:name=".Survey" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

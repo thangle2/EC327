@@ -147,9 +147,10 @@ public class monthlybill extends AppCompatActivity {
                         if (amountedit[i].isEnabled() && amountedit[i].getText().toString().trim().equalsIgnoreCase("")) {
                             amountedit[i].setError("Please Input");
                         }
+                        else if (Float.parseFloat(amountedit[i].getText().toString())<0){
+                            amountedit[i].setError("No negative!");
+                        }
                     }
-
-
                 }
             }
 

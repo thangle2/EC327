@@ -30,15 +30,20 @@ public class monthlybudget extends AppCompatActivity {
         nextmonthlybudget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!editmonthlybudget.getText().toString().trim().equalsIgnoreCase("")) {
+                if(editmonthlybudget.getText().toString().trim().equalsIgnoreCase("")) {
+                    editmonthlybudget.setError("Input");
+                }
+                else if (Float.parseFloat(editmonthlybudget.getText().toString())<0){
+                    editmonthlybudget.setError("No negative!");
+                }
+                else{
+
                     orginaluser.setMonthlyIncome(Float.parseFloat(editmonthlybudget.getText().toString()));
                     Intent a = new Intent(monthlybudget.this, monthlybill.class);
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     a.putExtra("userObject", orginaluser);
                     startActivity(a);
-                }
-                else{
-                    editmonthlybudget.setError("Input");
+
                 }
             }
         });

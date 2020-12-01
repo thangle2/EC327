@@ -18,9 +18,9 @@ import java.lang.reflect.Type;
 
 
 public class surveryresultinformation extends AppCompatActivity {
-    Button donotknowinformationsurveyresult;
+    Button donotknowinformationsurveyresult,oinkoink;
     EditText editsavings;
-    Animation longrew;
+    Animation longrew,longshot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,9 @@ public class surveryresultinformation extends AppCompatActivity {
         final TypeWriter textsurveryresultinformation=(TypeWriter) findViewById(R.id.textsurveryresultinformation);
         donotknowinformationsurveyresult=findViewById(R.id.donotknowinformationsurveyresult);
         longrew= AnimationUtils.loadAnimation(this,R.anim.longrew);
+        longshot=AnimationUtils.loadAnimation(this,R.anim.longshot);
         editsavings=findViewById(R.id.editsavings);
+        oinkoink=findViewById(R.id.oinkoink);
         Intent i=getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         String savedup=howmuch(orginaluser.getAge());
@@ -39,6 +41,7 @@ public class surveryresultinformation extends AppCompatActivity {
         textsurveryresultinformation.setCharacterDelay(50);
         textsurveryresultinformation.animatedText(result);
         donotknowinformationsurveyresult.startAnimation(longrew);
+        editsavings.startAnimation(longshot);
         donotknowinformationsurveyresult.setOnClickListener(new View.OnClickListener(){
             int counter=0;
             @Override
@@ -59,20 +62,56 @@ public class surveryresultinformation extends AppCompatActivity {
                 }
             }
         });
+
+
+        oinkoink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editsavings.getText().toString().trim().equalsIgnoreCase("") && editsavings.isEnabled())
+                {
+                    editsavings.setError("Input (Even if it's 0!)");
+
+                }
+                else {
+                final TypeWriter oinkoinktext=(TypeWriter) findViewById(R.id.oinkoinktext);
+                oinkoinktext.setText("");
+                oinkoinktext.setCharacterDelay(50);
+                oinkoinktext.animatedText("Oink! Oink!");
+
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                            if(editsavings.isEnabled()){
+                                orginaluser.setSavings(Float.parseFloat(editsavings.getText().toString()));
+                            }
+                            else{
+                                orginaluser.setSavings(0);
+                            }
+                            Intent a = new Intent(surveryresultinformation.this, surveyresultsubscription.class);
+                            a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                            a.putExtra("userObject", orginaluser);
+                            startActivity(a);
+
+                    }
+                }, 1000);}
+            }
+        });
     }
     public String howmuch(int age){
              String result = "";
-            if(age<25){
+            if(age<=25){
                 result= "Nothing! If you're not in debt\n you are doing well!";
             }
-            else  if (age>25 && age<30){
+            else  if (age>25 && age<=30){
                 result= "$6000 to $12000 ";
             }
 
-            else  if (age>30 && age<40){
+            else  if (age>30 && age<=40){
                 result= "$14000 to $28000 ";
             }
-            else  if (age>40 && age<60){
+            else  if (age>40 && age<=60){
                 result= "$25000 to $36000 ";
             }
             else  if (age>60){

@@ -10,14 +10,14 @@
 
     <Button
         android:id="@+id/buttonsplash"
-        android:layout_width="300dp"
+        android:layout_width="150dp"
         android:layout_height="65dp"
         android:layout_marginTop="228dp"
         android:layout_marginBottom="114dp"
         android:background="@drawable/bgbtngreen"
         android:gravity="center_horizontal"
 
-        android:text="@string/get_started"
+        android:text="Enter"
         android:textAlignment="center"
         android:textSize="24sp"
         app:backgroundTint="@color/teal_700"

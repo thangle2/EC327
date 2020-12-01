@@ -44,6 +44,9 @@ public class weektransport extends AppCompatActivity {
                 if(edittran.getText().toString().trim().equalsIgnoreCase("")) {
                     edittran.setError("Input");
                 }
+                else if (Float.parseFloat(edittran.getText().toString())<0){
+                    edittran.setError("No negative!");
+                }
 
                     else{
 
