@@ -14,6 +14,7 @@ public class Financials extends User  implements Serializable {
     protected float stTax;
     protected float ss;
     protected float healthInsurance;
+    protected float savings;
     //done
     protected float weeklyGroceries;
     protected  float carPayment; // Car insurance and Payments
@@ -35,8 +36,7 @@ public class Financials extends User  implements Serializable {
         weeklyGroceries=0;
         carPayment=0;
         gas=0;
-
-
+        savings=0;
     }
 
     public float getMonthlyIncome() {
@@ -124,7 +124,12 @@ public class Financials extends User  implements Serializable {
     public void setWeeklyGroceries(float weeklyGroceries) {
         this.weeklyGroceries = weeklyGroceries;
     }
-
+    public void setSavings(float savings){
+        this.savings=savings;
+    }
+    public float getSavings(){
+        return savings;
+    }
     public void setCarPayment(float carPayment) {
         this.carPayment = carPayment;
     }

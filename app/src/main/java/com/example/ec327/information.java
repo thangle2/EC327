@@ -82,6 +82,15 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
                     a.putExtra("userObject", orginaluser);
                     startActivity(a);
                 }
+                else if(editfirstname.getText().toString().matches(".*\\d.*")){
+                    editfirstname.setError("No Numbers");
+                }
+                else if(editlastname.getText().toString().matches(".*\\d.*")){
+                    editlastname.setError("No Numbers");
+                }
+                else if(Integer.parseInt(editage.getText().toString())>90 ||Integer.parseInt(editage.getText().toString())<0 ){
+                    editage.setError("?");
+                }
                 else{
                     for (EditText editText : inputarray) {
                         if (editText.length() == 0) {

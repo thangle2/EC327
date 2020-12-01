@@ -45,6 +45,9 @@ public class weeklygroceries extends AppCompatActivity {
                     editgro.setError("Input");
 
                 }
+                else if (Float.parseFloat(editgro.getText().toString())<0){
+                    editgro.setError("No negative!");
+                }
                 else {
                     Intent a = new Intent(weeklygroceries.this, weektransport.class);
                     orginaluser.setWeeklyGroceries(Float.parseFloat(editgro.getText().toString()));
