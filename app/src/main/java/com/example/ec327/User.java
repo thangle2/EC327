@@ -1,11 +1,31 @@
 package com.example.ec327;
 
-public class User{
-    String firstName;
-    String lastName;
-    String username;
-    String age;//
-    String state;
+import java.io.Serializable;
+@SuppressWarnings("serial")
+public class User implements Serializable {
+    protected String firstName;
+    protected String lastName;
+    protected String username;
+    protected int age;//
+    protected String state;
+
+    public User() {
+        firstName="";
+        lastName="";
+        username="";
+        age=0;
+        state="";
+    }
+    public boolean isEmpty(){
+        if(age==0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -19,7 +39,7 @@ public class User{
         return username;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -39,7 +59,7 @@ public class User{
         this.username = username;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

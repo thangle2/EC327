@@ -8,83 +8,103 @@
     tools:context=".monthlybudget">
 
     <TextView
-        android:id="@+id/textbud"
+        android:id="@+id/monthlybudgetmaintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="Monthly Budget"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/monthlybudgetsubtext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="49dp"
         android:src="@drawable/single21"
-        app:layout_constraintBottom_toTopOf="@+id/textbud"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/monthlybudgetsubtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="406dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="227dp"
-        android:text="Input your monthly budget\n after tax purely from \n all sources of income\n(ex: $1000/month)"
+        android:layout_marginTop="10dp"
+        android:text="Input your monthly budget\n before tax from \n all sources of income\n(ex: $1000/month)"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editmonthlybudget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/monthlybudgetmaintext" />
 
     <EditText
-        android:id="@+id/editbud"
+        android:id="@+id/editmonthlybudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="22dp"
         android:ems="15"
         android:hint="Monthly Budget"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nextmonthlybudget"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthlybudgetsubtext" />
 
     <Button
-        android:id="@+id/buttonbud"
+        android:id="@+id/nextmonthlybudget"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="62dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="120dp"
         android:background="@drawable/bgbtngreen"
         android:gravity="center_horizontal"
         android:text="Next"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:backgroundTint="#34D76A"
+        android:textSize="24sp"
+        app:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editbud"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editmonthlybudget" />
+
+    <Button
+        android:id="@+id/backmonthlybudget"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bgbtngreen"
+        android:gravity="center_horizontal"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextmonthlybudget" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,20 +1,43 @@
 package com.example.ec327;
+import java.io.Serializable;
 import java.util.HashMap;
-
-public class Financials extends User{
-    float monthlyIncome;                        //input variable to contain monthly Income of the user
-    float HousingCost;
-    float homeInsurance = 0;
-    float TotalTax;
-    float FedTax;
-    float stTax;
-    float ss;
-    float healthInsurance;
-    float weeklyGroceries;
-    float carPayment; // Car insurance and Payments
-    float gas; ///
+@SuppressWarnings("serial")
+public class Financials extends User  implements Serializable {
+    protected float monthlyIncome;
+    //done
+    protected float HousingCost;
+    //done
+    protected float homeInsurance = 0;
+    //done
+    protected float TotalTax;
+    protected float FedTax;
+    protected float stTax;
+    protected float ss;
+    protected float healthInsurance;
+    protected float savings;
+    //done
+    protected float weeklyGroceries;
+    protected  float carPayment; // Car insurance and Payments
+    //done
+    protected float gas;
     HashMap<String, Float> taxRates = new HashMap<String, Float>();
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
+    HashMap<String, Float> subscription= new HashMap<String, Float>();
+    HashMap<String, Float> investment= new HashMap<String, Float>();
+    public Financials(){
+        age=0;
+        firstName="";
+        lastName="";
+        username="";
+        monthlyIncome=0;
+        HousingCost=0;
+        homeInsurance=0;
+        healthInsurance=0;
+        weeklyGroceries=0;
+        carPayment=0;
+        gas=0;
+        savings=0;
+    }
 
     public float getMonthlyIncome() {
         return monthlyIncome;
@@ -87,6 +110,12 @@ public class Financials extends User{
     public void setSs(float ss) {
         this.ss = ss;
     }
+    public void setSubscription(String name,float value){
+        subscription.put(name,value);
+    }
+    public void setInvestment(String name,float value){
+        investment.put(name,value);
+    }
 
     public void setHealthInsurance(float healthInsurance) {
         this.healthInsurance = healthInsurance;
@@ -95,7 +124,12 @@ public class Financials extends User{
     public void setWeeklyGroceries(float weeklyGroceries) {
         this.weeklyGroceries = weeklyGroceries;
     }
-
+    public void setSavings(float savings){
+        this.savings=savings;
+    }
+    public float getSavings(){
+        return savings;
+    }
     public void setCarPayment(float carPayment) {
         this.carPayment = carPayment;
     }

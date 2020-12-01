@@ -49,7 +49,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/texttran" />
-
     <EditText
         android:id="@+id/edittran"
         android:layout_width="wrap_content"
@@ -63,27 +62,48 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <Button
+        android:id="@+id/backtran"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/bgbtngreen"
+        android:gravity="center_horizontal"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttontran" />
 
     <Button
         android:id="@+id/buttontran"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="62dp"
 
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bgbtngreen"
         android:gravity="center_horizontal"
         android:text="Done!"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+
         android:textSize="25sp"
-        app:backgroundTint="#34D76A"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@+id/backtran"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittran" />
 
