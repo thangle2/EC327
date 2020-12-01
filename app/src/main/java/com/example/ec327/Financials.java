@@ -137,7 +137,6 @@ public class Financials extends User  implements Serializable {
     public void setGas(float gas) {
         this.gas = gas;
     }
-
 /*
 <string-array name="states">
         <item>AL</item>
