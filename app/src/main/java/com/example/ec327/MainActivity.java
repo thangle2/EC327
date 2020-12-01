@@ -16,7 +16,7 @@ import android.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     Button buttonsplash;
-    ImageView ivSplash;
+    ImageView ivSplash; // test
     Animation atg,textone,texttwo;
     int test;
 
