@@ -173,6 +173,7 @@
         app:backgroundTintMode="src_over"
         app:layout_constraintBottom_toTopOf="@+id/buttonhealthinsurance"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/editcarpayment"
         app:layout_constraintTop_toBottomOf="@+id/buttonhouseinsurance" />
 

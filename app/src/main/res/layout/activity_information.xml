@@ -52,9 +52,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/editusername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editfirstname"
@@ -86,7 +87,7 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/buttonsurvey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editusername" />
 
@@ -99,10 +100,10 @@
         android:entries="@array/states"
         app:layout_constraintBottom_toTopOf="@+id/buttonsurvey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editusername"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.685" />
 
     <TextView
         android:id="@+id/textStates"
