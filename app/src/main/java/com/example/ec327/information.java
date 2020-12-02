@@ -101,10 +101,6 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-
-
-
-
     }
 
     @Override
@@ -118,7 +114,6 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
             }
         }
         return true;
-
     }
 
     @Override

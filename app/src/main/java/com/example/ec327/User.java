@@ -16,6 +16,7 @@ public class User implements Serializable {
         age=0;
         state="";
     }
+
     public boolean isEmpty(){
         if(age==0){
             return true;
@@ -25,7 +26,6 @@ public class User implements Serializable {
         }
 
     }
-
 
     public String getFirstName() {
         return firstName;

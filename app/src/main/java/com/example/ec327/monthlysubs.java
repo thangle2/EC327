@@ -87,7 +87,6 @@ public class monthlysubs extends AppCompatActivity {
             }
         });
 
-
         buttonsub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,13 +109,9 @@ public class monthlysubs extends AppCompatActivity {
     public boolean already(Financials orginaluser,String string){
         for (Map.Entry mapElement:orginaluser.subscription.entrySet()) {
             String name = (String) mapElement.getKey();
-           if(name.equals(string)){
+           if(name.equals(string)) {
                return true;
            }
-
-
-
-
         }
         return false;
 
@@ -130,7 +125,5 @@ public class monthlysubs extends AppCompatActivity {
         return true;
 
     }
-
-
 
 }

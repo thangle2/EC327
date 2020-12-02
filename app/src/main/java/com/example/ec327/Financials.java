@@ -1,6 +1,7 @@
 package com.example.ec327;
 import java.io.Serializable;
 import java.util.HashMap;
+
 @SuppressWarnings("serial")
 public class Financials extends User  implements Serializable {
     protected float monthlyIncome;
@@ -12,12 +13,11 @@ public class Financials extends User  implements Serializable {
 
     //done
     protected float gas;
-    protected String
-    HashMap<String, Float> taxRates = new HashMap<String, Float>();
-    HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
-    HashMap<String, Float> subscription= new HashMap<String, Float>();
-    HashMap<String, Float> investment= new HashMap<String, Float>();
-    HashMap<String, Float> bills= new HashMap<String, Float>();
+    protected HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
+    protected HashMap<String, Float> subscription= new HashMap<String, Float>();
+    protected HashMap<String, Float> investment= new HashMap<String, Float>();
+    protected HashMap<String, Float> bills= new HashMap<String, Float>();
+
     public Financials(){
         age=0;
         firstName="";
@@ -27,22 +27,48 @@ public class Financials extends User  implements Serializable {
         weeklyGroceries=0;
         gas=0;
         savings=0;
-        String[] sstate = {"Volvo", "BMW", "Ford", "Mazda"};
     }
 
     public float getMonthlyIncome() {
         return monthlyIncome;
     }
 
-
-
     public float getWeeklyGroceries() {
         return weeklyGroceries;
     }
 
-
     public float getGas() {
         return gas;
+    }
+
+    public float totalMonthlyExpense(){
+        float sum = 0;
+
+        for(Float i : this.subscription.values()) {
+            sum = sum + i;
+        }
+
+        for(Float i : this.investment.values()) {
+            sum = sum + i;
+        }
+
+        for(Float i : this.bills.values()) {
+            sum = sum + i;
+        }
+
+        return sum + gas + (4 * weeklyGroceries);
+    }
+
+    public void addSubscription(String name, Float value){
+        subscription.put(name, value);
+    }
+
+    public void addInvestment(String name, Float value){
+        investment.put(name, value);
+    }
+
+    public void addBill(String name, Float value){
+        bills.put(name, value);
     }
 
     public void setMonthlyIncome(float monthlyIncome) {
@@ -59,7 +85,6 @@ public class Financials extends User  implements Serializable {
         bills.put(name,value);
     }
 
-
     public void setWeeklyGroceries(float weeklyGroceries) {
         this.weeklyGroceries = weeklyGroceries;
     }
@@ -73,61 +98,4 @@ public class Financials extends User  implements Serializable {
     public void setGas(float gas) {
         this.gas = gas;
     }
-/*
-<string-array name="states">
-       "AL"
-       "AR"
-       "AZ"
-       "CA"
-       "CO"
-       "CT"
-       "DE"
-       "DC"
-       "FL"
-       "GA"
-       "HI"
-       "ID"
-       "IL"
-       "IN"
-       "IA"
-       "KS"
-       "KY"
-       "LA"
-       "ME"
-       "MD"
-       "MA"
-       "MI"
-       "MN"
-       "MS"
-       "MO"
-       "MT"
-       "NE"
-       "NV"
-       "NH"
-       "NJ"
-       "NM"
-       "NY"
-       "NC"
-       "ND"
-       "OH"
-       "OK"
-       "OR"
-       "PA"
-       "RI"
-       "SC"
-       "SD"
-       "TN"
-       "TX"
-       "UT"
-       "VT"
-       "VA"
-       "WA"
-       "WV"
-       "WI"
-       "WY"
-
-    </string-array>
- */
-
-
 }

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
+
 public class surveryresultinformation extends AppCompatActivity {
     Button donotknowinformationsurveyresult,oinkoink;
     EditText editsavings;
@@ -60,7 +61,6 @@ public class surveryresultinformation extends AppCompatActivity {
                 }
             }
         });
-
 
         oinkoink.setOnClickListener(new View.OnClickListener() {
             @Override
