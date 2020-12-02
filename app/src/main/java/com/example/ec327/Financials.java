@@ -78,7 +78,7 @@ public class Financials extends User implements Serializable {
         weeklySpending.put("Wednesday", Wed);
         weeklySpending.put("Thursday", Thur);
         weeklySpending.put("Friday", Fri);
-        weeklySpending.put("Saturday", Sat);
+        weeklySpending.put("Saturday", Sat); //Thang can you see this????
     }
 
     public void addAdditionalExpense(String name, Float value){
