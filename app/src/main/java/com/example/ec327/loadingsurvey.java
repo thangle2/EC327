@@ -36,7 +36,7 @@ public class loadingsurvey extends AppCompatActivity {
                 startActivity(a);
             }
 
-        }, 6000L);
+        }, 9000L);
 
 
     }

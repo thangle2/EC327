@@ -15,8 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
-
-
 public class surveryresultinformation extends AppCompatActivity {
     Button donotknowinformationsurveyresult,oinkoink;
     EditText editsavings;

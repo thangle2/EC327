@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //test=1;
-        test=2; //for home screen access
+        test=1; //for home screen access
 
         //constructors
 
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         //fonts
         Typeface AR=Typeface.createFromAsset(getAssets(),"fonts/anmatic_regular.ttf");
         Typeface AB=Typeface.createFromAsset(getAssets(),"fonts/chunkfive_print.otf");
-
         atg= AnimationUtils.loadAnimation(this,R.anim.atg);
         textone= AnimationUtils.loadAnimation(this,R.anim.textone);
         texttwo= AnimationUtils.loadAnimation(this,R.anim.texttwo);
