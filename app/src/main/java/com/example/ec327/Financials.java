@@ -12,6 +12,7 @@ public class Financials extends User  implements Serializable {
 
     //done
     protected float gas;
+    protected String
     HashMap<String, Float> taxRates = new HashMap<String, Float>();
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
     HashMap<String, Float> subscription= new HashMap<String, Float>();
@@ -26,6 +27,7 @@ public class Financials extends User  implements Serializable {
         weeklyGroceries=0;
         gas=0;
         savings=0;
+        String[] sstate = {"Volvo", "BMW", "Ford", "Mazda"};
     }
 
     public float getMonthlyIncome() {
@@ -71,4 +73,61 @@ public class Financials extends User  implements Serializable {
     public void setGas(float gas) {
         this.gas = gas;
     }
+/*
+<string-array name="states">
+       "AL"
+       "AR"
+       "AZ"
+       "CA"
+       "CO"
+       "CT"
+       "DE"
+       "DC"
+       "FL"
+       "GA"
+       "HI"
+       "ID"
+       "IL"
+       "IN"
+       "IA"
+       "KS"
+       "KY"
+       "LA"
+       "ME"
+       "MD"
+       "MA"
+       "MI"
+       "MN"
+       "MS"
+       "MO"
+       "MT"
+       "NE"
+       "NV"
+       "NH"
+       "NJ"
+       "NM"
+       "NY"
+       "NC"
+       "ND"
+       "OH"
+       "OK"
+       "OR"
+       "PA"
+       "RI"
+       "SC"
+       "SD"
+       "TN"
+       "TX"
+       "UT"
+       "VT"
+       "VA"
+       "WA"
+       "WV"
+       "WI"
+       "WY"
+
+    </string-array>
+ */
+
+
 }
