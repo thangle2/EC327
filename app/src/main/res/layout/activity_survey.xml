@@ -27,7 +27,7 @@
        android:layout_marginEnd="3dp"
        android:layout_marginBottom="207dp"
        android:lineSpacingExtra="5dp"
-       android:text="This looks like your first time using Wallet Saver!\n In order to fully utilize this app, we need you to take\n a simple survey before starting."
+       android:text="This looks like your first time using Piggy Saver!\n In order to fully utilize this app, we need you to take\n a simple survey before starting."
        android:textAlignment="center"
        android:textColor="@color/black"
        android:textSize="25sp"
