@@ -1,5 +1,6 @@
 package com.example.ec327;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -52,8 +53,15 @@ public class Home extends AppCompatActivity{
             }
 
         });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(Home.this, addspending.class);
+                a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                startActivity(a);
 
-
+            }
+        });
 
         /*FloatingActionButton fab = findViewById(R.id.);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +72,6 @@ public class Home extends AppCompatActivity{
             }
         });*/
     }
-
     private Boolean clickAnimation(Boolean clicked) {
         Boolean result = null;
         if (clicked) {
