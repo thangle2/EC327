@@ -20,6 +20,7 @@ public class Financials extends User  implements Serializable {
     protected  float carPayment; // Car insurance and Payments
     //done
     protected float gas;
+    protected String
     HashMap<String, Float> taxRates = new HashMap<String, Float>();
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();
     HashMap<String, Float> subscription= new HashMap<String, Float>();
@@ -37,6 +38,7 @@ public class Financials extends User  implements Serializable {
         carPayment=0;
         gas=0;
         savings=0;
+        String[] sstate = {"Volvo", "BMW", "Ford", "Mazda"};
     }
 
     public float getMonthlyIncome() {
@@ -139,56 +141,57 @@ public class Financials extends User  implements Serializable {
     }
 /*
 <string-array name="states">
-        <item>AL</item>
-        <item>AR</item>
-        <item>AZ</item>
-        <item>CA</item>
-        <item>CO</item>
-        <item>CT</item>
-        <item>DE</item>
-        <item>DC</item>
-        <item>FL</item>
-        <item>GA</item>
-        <item>HI</item>
-        <item>ID</item>
-        <item>IL</item>
-        <item>IN</item>
-        <item>IA</item>
-        <item>KS</item>
-        <item>KY</item>
-        <item>LA</item>
-        <item>ME</item>
-        <item>MD</item>
-        <item>MA</item>
-        <item>MI</item>
-        <item>MN</item>
-        <item>MS</item>
-        <item>MO</item>
-        <item>MT</item>
-        <item>NE</item>
-        <item>NV</item>
-        <item>NH</item>
-        <item>NJ</item>
-        <item>NM</item>
-        <item>NY</item>
-        <item>NC</item>
-        <item>ND</item>
-        <item>OH</item>
-        <item>OK</item>
-        <item>OR</item>
-        <item>PA</item>
-        <item>RI</item>
-        <item>SC</item>
-        <item>SD</item>
-        <item>TN</item>
-        <item>TX</item>
-        <item>UT</item>
-        <item>VT</item>
-        <item>VA</item>
-        <item>WA</item>
-        <item>WV</item>
-        <item>WI</item>
-        <item>WY</item>
+       "AL"
+       "AR"
+       "AZ"
+       "CA"
+       "CO"
+       "CT"
+       "DE"
+       "DC"
+       "FL"
+       "GA"
+       "HI"
+       "ID"
+       "IL"
+       "IN"
+       "IA"
+       "KS"
+       "KY"
+       "LA"
+       "ME"
+       "MD"
+       "MA"
+       "MI"
+       "MN"
+       "MS"
+       "MO"
+       "MT"
+       "NE"
+       "NV"
+       "NH"
+       "NJ"
+       "NM"
+       "NY"
+       "NC"
+       "ND"
+       "OH"
+       "OK"
+       "OR"
+       "PA"
+       "RI"
+       "SC"
+       "SD"
+       "TN"
+       "TX"
+       "UT"
+       "VT"
+       "VA"
+       "WA"
+       "WV"
+       "WI"
+       "WY"
+
     </string-array>
  */
 
