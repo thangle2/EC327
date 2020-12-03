@@ -6,14 +6,14 @@ import java.io.Serializable;
 public class User implements Serializable {
     protected String firstName;
     protected String lastName;
-    protected String username;
+    //protected String username;
     protected int age;//
     protected String state;
 
     public User() {
         firstName = "";
         lastName = "";
-        username = "";
+     //   username = "";
         age = 0;
         state = "";
     }
@@ -35,9 +35,7 @@ public class User implements Serializable {
         return lastName;
     }
 
-    public String getUsername() {
-        return username;
-    }
+ //   public String getUsername() {        return username;    }
 
     public int getAge() {
         return age;
@@ -55,9 +53,7 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  //  public void setUsername(String username) {        this.username = username;    }
 
     public void setAge(int age) {
         this.age = age;
