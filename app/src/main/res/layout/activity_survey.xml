@@ -20,14 +20,13 @@
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintVertical_bias="0.0" />
 
-   <TextView
+   <com.example.ec327.TypeWriter
        android:id="@+id/textsurvey"
        android:layout_width="390dp"
        android:layout_height="350dp"
        android:layout_marginEnd="3dp"
        android:layout_marginBottom="207dp"
        android:lineSpacingExtra="5dp"
-       android:text="This looks like your first time using Piggy Saver!\n In order to fully utilize this app, we need you to take\n a simple survey before starting."
        android:textAlignment="center"
        android:textColor="@color/black"
        android:textSize="25sp"
