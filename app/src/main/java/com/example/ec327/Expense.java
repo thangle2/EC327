@@ -31,11 +31,11 @@ public class Expense {
 
     public String getTimeStamp() {
         return timeStamp;
-    }
+    }                       //Returns a Timestamp for last update on info
 
     public void setName(String name) {
         this.name = name;
-    }
+    }   //sets user's fullname
 
     public void setCost(float cost) {
         this.cost = cost;
@@ -43,5 +43,5 @@ public class Expense {
 
     public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
-    }
+    }          //Assigns a Timestamp for last update on info
 }
