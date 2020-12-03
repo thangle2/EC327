@@ -49,7 +49,7 @@ public class weektransport extends AppCompatActivity {
 
 
                     Intent a = new Intent(weektransport.this, loadingsurvey.class);
-                    orginaluser.setGas(Float.parseFloat(edittran.getText().toString()));
+                    orginaluser.setTransportation(Float.parseFloat(edittran.getText().toString()));
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     a.putExtra("userObject", orginaluser);
                     startActivity(a);
