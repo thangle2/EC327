@@ -1,10 +1,12 @@
 package com.example.ec327;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 /*import androidx.constraintlayout.widget.ConstraintLayout;*/
 
 import android.content.Intent;
 /*import android.graphics.drawable.AnimationDrawable;*/
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 /*import android.widget.AdapterView;
@@ -44,10 +46,19 @@ public class monthlysubs extends AppCompatActivity {
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
-
+        editsubvalue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    editsubvalue.setText("$");
+                    editsubvalue.setSelection(1);
+                }
+            }
+        });
         submitsub.setOnClickListener(new View.OnClickListener() {
             int counter = 0;
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 if (!checkinput(inputamount)) {
@@ -56,25 +67,23 @@ public class monthlysubs extends AppCompatActivity {
                             editText.setError("Input");
                         }
                     }
-                } else if (Float.parseFloat(editsubvalue.getText().toString()) < 0) {
-                    editsubvalue.setError("No negative!");
                 } else if (orginaluser.subscription.size() >= 10) {
                     editsubname.setError("Max: 10!");
-                } else if (already(orginaluser, editsubname.getText().toString()) && counter == 0) {
+                } else if (already(orginaluser, editsubname.getText().toString().toLowerCase()) && counter == 0) {
                     editsubname.setError("Already Input! Press again in resubmit!");
                     counter = 1;
-                } else if (already(orginaluser, editsubname.getText().toString()) && counter == 1) {
-                    String result = "Subscription: " + editsubname.getText().toString() + "\nValue: " + editsubvalue.getText().toString();
+                } else if (already(orginaluser, editsubname.getText().toString().toLowerCase()) && counter == 1) {
+                    String result = "Subscription: " + editsubname.getText().toString() + "\nValue: $" + editsubvalue.getText().toString().substring(1);
                     textminisub.setText(result);
-                    orginaluser.setSubscription(editsubname.getText().toString(), Float.parseFloat(editsubvalue.getText().toString()));
+                    orginaluser.setSubscription(editsubname.getText().toString().toLowerCase(), Float.parseFloat(editsubvalue.getText().toString().substring(1)));
                     editsubname.setError(null);
                     editsubname.setText("");
                     editsubvalue.setText("");
                     counter = 0;
                 } else {
-                    String result = "Subscription: " + editsubname.getText().toString() + "\nValue: " + editsubvalue.getText().toString();
+                    String result = "Subscription: " + editsubname.getText().toString() + "\nValue: $" + editsubvalue.getText().toString().substring(1);
                     textminisub.setText(result);
-                    orginaluser.setSubscription(editsubname.getText().toString(), Float.parseFloat(editsubvalue.getText().toString()));
+                    orginaluser.setSubscription(editsubname.getText().toString().toLowerCase(), Float.parseFloat(editsubvalue.getText().toString().substring(1)));
                     editsubname.setText("");
                     editsubvalue.setText("");
 

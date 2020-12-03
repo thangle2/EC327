@@ -24,7 +24,7 @@ public class addspending extends AppCompatActivity {                //
         typeinput = findViewById(R.id.typeinput);
         amountinput = findViewById(R.id.amountinput);
         displayvalue = findViewById(R.id.displayvalue);
-
+        addreturnhome = findViewById(R.id.addreturnhome);
 
         submitspending.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,34 +39,25 @@ public class addspending extends AppCompatActivity {                //
                 } else if (Float.parseFloat(amountinput.getText().toString()) < 0) {
                     amountinput.setError("No negative!");
                 } else {
-                    calculatepercentage();                 //Calculate % spending relative to income
+                    calculatepercentage();         //Calculate % spending relative to daily limit
                 }
-                //next screen
-                /*else {
-                    Intent a = new Intent(addspending.this, .class);
-                    a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                    startActivity(a);
-                }*/
-
-                //display % of daily amount
-
             }
         });
         addreturnhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent c = new Intent(addspending.this, Home.class);
-                c.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                startActivity(c);
+                Intent a = new Intent(addspending.this, Home.class);
+                a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                startActivity(a);
             }
         });
     }
-
     private void calculatepercentage() {
         //get entered texts from the amountinput
-        Double num1 = Double.parseDouble(amountinput.getText().toString());
+        double num1 = Double.parseDouble(amountinput.getText().toString());
         //do the calculation
-        Double calculated = (num1 / 2500);
+        double num2 = 2500.00; //num2: number from daily limit
+        double calculated = (num1 / num2);
         //display value on screen.
         displayvalue.setText(String.valueOf("You spend " + calculated + "% of your daily amount"));
     }

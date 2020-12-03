@@ -35,7 +35,7 @@ public class surveryresultinformation extends AppCompatActivity {
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         String savedup = howmuch(orginaluser.getAge());
         String result = "Hello " + orginaluser.getFirstName() + "!\n" +
-                "According to your age (" + orginaluser.getAge() + ")\n" + "You should already have saved:\n" + savedup +
+                "According to your age (" + orginaluser.getAge() + ")\n" + "You should already have saved up:\n" + savedup +
                 "\n\nHow much do you have saved?\nPress the pig nose to submit";
         textsurveryresultinformation.setText("");
         textsurveryresultinformation.setCharacterDelay(50);

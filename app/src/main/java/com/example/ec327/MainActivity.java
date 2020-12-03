@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //test=1;
-        test = 2; //for home screen access
+        test = 1; //for home screen access
 
         //constructors
 

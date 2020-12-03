@@ -62,7 +62,6 @@ public class Home extends AppCompatActivity {
                 Intent a = new Intent(Home.this, addspending.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(a);
-
             }
         });
 
