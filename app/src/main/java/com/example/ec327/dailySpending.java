@@ -6,13 +6,13 @@ import java.util.HashMap;
 public class dailySpending {                      //class generates calculations for daily spending
     ArrayList<Expense> expenses = new ArrayList<Expense>();
 
-    public dailySpending() {                                                  //constructor
+    public dailySpending() {                                                  // default constructor
 
     }
 
     void addExpense(Expense newExpense) {
         expenses.add(newExpense);
-    }      //Expense Summation
+    }      //Add to list of expenses
 
     boolean isEmpty() {
         if (expenses.size() == 0) {
@@ -28,6 +28,6 @@ public class dailySpending {                      //class generates calculations
                 expenses.remove(i);
             }
         }
-    }                        //Expense Summation
+    }                        //remove expense
 
 }

@@ -6,11 +6,9 @@ import java.util.HashMap;
 @SuppressWarnings("serial")
 public class Financials extends User implements Serializable {
     protected float monthlyIncome;                      //monthly Income post taxation (payroll)
-
     protected float savings;                            //Personal Savings
     protected float weeklyGroceries;                    //Groceries Expenditure (Weekly/not Monthly)
     protected float gas;                                //Transportation Cost
-    protected String
     //    HashMap<String, Float> taxRates = new HashMap<String, Float>(); //For Auto-Tax Calculation
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();     //Uncategorized Expenses
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
@@ -26,18 +24,15 @@ public class Financials extends User implements Serializable {
         weeklyGroceries = 0;
         gas = 0;
         savings = 0;
-        String[] sstate = {"Volvo", "BMW", "Ford", "Mazda"};
-    }                                   //
+    }
 
     public float getMonthlyIncome() {
         return monthlyIncome;
     }
 
-
     public float getWeeklyGroceries() {
         return weeklyGroceries;
     }
-
 
     public float getGas() {
         return gas;
@@ -59,7 +54,6 @@ public class Financials extends User implements Serializable {
         bills.put(name, value);
     }
 
-
     public void setWeeklyGroceries(float weeklyGroceries) {
         this.weeklyGroceries = weeklyGroceries;
     }
@@ -75,61 +69,5 @@ public class Financials extends User implements Serializable {
     public void setGas(float gas) {
         this.gas = gas;
     }
-/*
-<string-array name="states">
-       "AL"
-       "AR"
-       "AZ"
-       "CA"
-       "CO"
-       "CT"
-       "DE"
-       "DC"
-       "FL"
-       "GA"
-       "HI"
-       "ID"
-       "IL"
-       "IN"
-       "IA"
-       "KS"
-       "KY"
-       "LA"
-       "ME"
-       "MD"
-       "MA"
-       "MI"
-       "MN"
-       "MS"
-       "MO"
-       "MT"
-       "NE"
-       "NV"
-       "NH"
-       "NJ"
-       "NM"
-       "NY"
-       "NC"
-       "ND"
-       "OH"
-       "OK"
-       "OR"
-       "PA"
-       "RI"
-       "SC"
-       "SD"
-       "TN"
-       "TX"
-       "UT"
-       "VT"
-       "VA"
-       "WA"
-       "WV"
-       "WI"
-       "WY"
-
-    </string-array>
- */
-
 
 }

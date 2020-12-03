@@ -63,7 +63,7 @@
         android:layout_marginBottom="281dp"
         android:background="@drawable/bgbtngreen"
         android:gravity="center_horizontal"
-        android:text="Do not know"
+        android:text="DO NOT KNOW"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -92,6 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donotknowinformationsurveyresult" />
+        app:layout_constraintTop_toBottomOf="@+id/donotknowinformationsurveyresult"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
