@@ -100,7 +100,7 @@ public class Financials extends User implements Serializable {
         return savings;
     }
 
-    public void setGas(float transportation) {
+    public void setTransportation(float transportation) {
         this.transportation = transportation;
     }
 
