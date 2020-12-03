@@ -35,8 +35,8 @@ public class weektransport extends AppCompatActivity {
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
-        if (orginaluser.getGas() > 0) {
-            edittran.setText(Float.toString(orginaluser.getGas()));
+        if (orginaluser.getTransportation() > 0) {
+            edittran.setText(Float.toString(orginaluser.getTransportation()));
         }
         buttontran.setOnClickListener(new View.OnClickListener() {
             @Override
