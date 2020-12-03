@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class information extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner mySpinner;
     Button buttonsurvey;
-    EditText editfirstname, editage, editlastname, editusername;
+    EditText editfirstname, editage, editlastname;
     EditText[] inputarray = new EditText[4];
 
     @SuppressLint("SetTextI18n")
@@ -33,8 +33,10 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
         inputarray[1] = editfirstname;
         editlastname = findViewById(R.id.editlastname);
         inputarray[2] = editlastname;
+        /*
         editusername = findViewById(R.id.editusername);
         inputarray[3] = editusername;
+        */
 
         //grabbing object
         Intent i = getIntent();
@@ -48,9 +50,12 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
         if (!orginaluser.getLastName().equals("")) {
             editlastname.setText(orginaluser.getLastName());
         }
+        /*
         if (!orginaluser.getUsername().equals("")) {
             editusername.setText(orginaluser.getUsername());
         }
+        */
+
 
         //making spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -75,7 +80,7 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
                     orginaluser.setAge(Integer.parseInt(editage.getText().toString()));
                     orginaluser.setFirstName(editfirstname.getText().toString());
                     orginaluser.setLastName(editlastname.getText().toString());
-                    orginaluser.setUsername(editusername.getText().toString());
+                    //orginaluser.setUsername(editusername.getText().toString());
                     orginaluser.setState(mySpinner.getSelectedItem().toString());
                     Intent a = new Intent(information.this, monthlybudget.class);
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);

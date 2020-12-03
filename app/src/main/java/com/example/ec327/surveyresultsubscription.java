@@ -32,8 +32,8 @@ public class surveyresultsubscription extends AppCompatActivity {
             float value = (float) mapElement.getValue();
             total = total + value;
             result1 = result1 + (name + ": $" + Float.toString(value) + "\n");
-
         }
+
         int amount = orginaluser.subscription.size() * 75;
         textaddingsubscription.setText("");
         textaddingsubscription.setCharacterDelay(50);
