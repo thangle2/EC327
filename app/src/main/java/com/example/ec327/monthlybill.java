@@ -51,32 +51,37 @@ public class monthlybill extends AppCompatActivity {
         });
 
         buttonsubmit.setOnClickListener(new View.OnClickListener() {
-            int counter=1;
+            int counter = 0;
+
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                if(!checkinput(amountedit)){
-                    for(int i=0;i<amountedit.length;i++){
-                        if(amountedit[i].getText().toString().trim().equalsIgnoreCase("")){
-                            amountedit[i].setError("Input");
+                if (!checkinput(amountedit)) {
+                    for (EditText editText : amountedit) {
+                        if (editText.getText().toString().trim().equalsIgnoreCase("")) {
+                            editText.setError("Input");
                         }
                     }
-                }
-                else if(already(orginaluser,monthlybillsnames.getText().toString().toLowerCase()) && counter==0){
-                    counter=1;
-                    monthlybillsnames.setError("Already input! Submit again if correct");
-
-
-                }
-                else{
-                    counter=0;
-                    String result="Name: "+monthlybillsnames.getText().toString()+"\nValue: $"+monthbillsvalue.getText().toString().substring(1);
-                    orginaluser.setBills(monthlybillsnames.getText().toString(),Float.parseFloat(monthbillsvalue.getText().toString().substring(1)));
+                } else if (orginaluser.subscription.size() >= 10) {
+                    monthlybillsnames.setError("Max: 10!");
+                } else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 0) {
+                    monthlybillsnames.setError("Already Input! Press again in resubmit!");
+                    counter = 1;
+                } else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 1) {
+                    String result = "Subscription: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
                     textviewbill.setText(result);
-                    for(int i=0;i<amountedit.length;i++){
-                            amountedit[i].setText("");
-                            amountedit[i].setError(null);
-                    }
+                    orginaluser.setSubscription(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
+                    monthlybillsnames.setError(null);
+                    monthlybillsnames.setText("");
+                    monthbillsvalue.setText("");
+                    counter = 0;
+                } else {
+                    String result = "Subscription: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
+                    textviewbill.setText(result);
+                    orginaluser.setSubscription(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
+                    monthlybillsnames.setText("");
+                    monthbillsvalue.setText("");
+
 
                 }
             }

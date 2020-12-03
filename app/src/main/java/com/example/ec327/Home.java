@@ -28,7 +28,6 @@ public class Home extends AppCompatActivity {
     TypeWriter totalamount;
     FloatingActionButton pen, profile, add, settings;
     Boolean clicked = true;
-    Boolean clicked = true;
     Animation rotate_open, rotate_end, from_bottom, to_bottom;
 
     @Override
