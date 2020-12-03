@@ -6,7 +6,6 @@ import java.util.HashMap;
 @SuppressWarnings("serial")
 public class Financials extends User implements Serializable {
     protected float monthlyIncome;                      //monthly Income post taxation (payroll)
-
     protected float savings;                            //Personal Savings
     protected float weeklyGroceries;                    //Groceries Expenditure (Weekly/not Monthly)
     protected float gas;                                //Transportation Cost
