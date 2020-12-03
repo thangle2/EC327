@@ -9,13 +9,13 @@ public class Expense {
     protected float cost;
     protected String timeStamp;
 
-    public Expense(){
+    public Expense() {
         name = " ";
         cost = 0;
         timeStamp = "";
     }
 
-    public Expense(String name, float cost, String time){
+    public Expense(String name, float cost, String time) {
         this.name = name;
         this.cost = cost;
         this.timeStamp = new SimpleDateFormat("yyy.MM.dd.HH.mm.ss").format(new Date());

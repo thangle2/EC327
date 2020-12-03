@@ -10,32 +10,37 @@ import androidx.annotation.NonNull;
 public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
     private CharSequence mtext;
     private int mindex;
-    private long delay=150; //in miliseconds
-    public TypeWriter(Context context){
+    private long delay = 150; //in miliseconds
+
+    public TypeWriter(Context context) {
         super(context);
     }
-    public TypeWriter(Context context, AttributeSet attrs){
-        super(context,attrs);
+
+    public TypeWriter(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
-    private Handler mhandler=new Handler();
-    private Runnable characteradder=new Runnable() {
+
+    private Handler mhandler = new Handler();
+    private Runnable characteradder = new Runnable() {
         @Override
         public void run() {
-            setText(mtext.subSequence(0,mindex++));
-            if(mindex<=mtext.length()){
-                mhandler.postDelayed(characteradder,delay);
+            setText(mtext.subSequence(0, mindex++));
+            if (mindex <= mtext.length()) {
+                mhandler.postDelayed(characteradder, delay);
             }
         }
     };
-    public void animatedText(CharSequence txt){
-        mtext=txt;
-        mindex=0;
+
+    public void animatedText(CharSequence txt) {
+        mtext = txt;
+        mindex = 0;
         setText("");
         mhandler.removeCallbacks(characteradder);
-        mhandler.postDelayed(characteradder,delay);
+        mhandler.postDelayed(characteradder, delay);
     }
-    public void setCharacterDelay(long m){
-        delay=m;
+
+    public void setCharacterDelay(long m) {
+        delay = m;
     }
 
 }

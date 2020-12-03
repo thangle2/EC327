@@ -1,6 +1,7 @@
 package com.example.ec327;
 
 import java.io.Serializable;
+
 @SuppressWarnings("serial")
 public class User implements Serializable {
     protected String firstName;
@@ -10,18 +11,17 @@ public class User implements Serializable {
     protected String state;
 
     public User() {
-        firstName="";
-        lastName="";
-        username="";
-        age=0;
-        state="";
+        firstName = "";
+        lastName = "";
+        username = "";
+        age = 0;
+        state = "";
     }
 
-    public boolean isEmpty(){
-        if(age==0){
+    public boolean isEmpty() {
+        if (age == 0) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
 

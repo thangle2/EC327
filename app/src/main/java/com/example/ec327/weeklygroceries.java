@@ -19,7 +19,7 @@ import java.lang.reflect.Array;
 
 public class weeklygroceries extends AppCompatActivity {
 
-    Button buttongro,backgro;
+    Button buttongro, backgro;
     EditText editgro;
 
     @SuppressLint("SetTextI18n")
@@ -29,26 +29,24 @@ public class weeklygroceries extends AppCompatActivity {
         setContentView(R.layout.activity_weeklygroceries);
 
         buttongro = findViewById(R.id.buttongro);
-        backgro=findViewById(R.id.backgro);
-        editgro=findViewById(R.id.editgro);
+        backgro = findViewById(R.id.backgro);
+        editgro = findViewById(R.id.editgro);
 
 
-        Intent i=getIntent();
+        Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
-        if(orginaluser.getWeeklyGroceries()>0){
+        if (orginaluser.getWeeklyGroceries() > 0) {
             editgro.setText(Float.toString(orginaluser.getWeeklyGroceries()));
         }
         buttongro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(editgro.getText().toString().trim().equalsIgnoreCase("")){
+                if (editgro.getText().toString().trim().equalsIgnoreCase("")) {
                     editgro.setError("Input");
 
-                }
-                else if (Float.parseFloat(editgro.getText().toString())<0){
+                } else if (Float.parseFloat(editgro.getText().toString()) < 0) {
                     editgro.setError("No negative!");
-                }
-                else {
+                } else {
                     Intent a = new Intent(weeklygroceries.this, weektransport.class);
                     orginaluser.setWeeklyGroceries(Float.parseFloat(editgro.getText().toString()));
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
@@ -62,7 +60,7 @@ public class weeklygroceries extends AppCompatActivity {
             public void onClick(View v) {
                 Intent a = new Intent(weeklygroceries.this, investment.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                a.putExtra("userObject",orginaluser);
+                a.putExtra("userObject", orginaluser);
                 startActivity(a);
             }
         });

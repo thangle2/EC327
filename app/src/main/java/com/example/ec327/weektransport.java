@@ -19,7 +19,7 @@ import java.lang.reflect.Array;
 
 public class weektransport extends AppCompatActivity {
 
-    Button buttontran,backtran;
+    Button buttontran, backtran;
     EditText edittran;
 
     @SuppressLint("SetTextI18n")
@@ -29,26 +29,23 @@ public class weektransport extends AppCompatActivity {
         setContentView(R.layout.activity_weektransport);
 
         buttontran = findViewById(R.id.buttontran);
-        backtran=findViewById(R.id.backtran);
-        edittran=findViewById(R.id.edittran);
+        backtran = findViewById(R.id.backtran);
+        edittran = findViewById(R.id.edittran);
 
-        Intent i=getIntent();
+        Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
-        if(orginaluser.getGas()>0){
+        if (orginaluser.getGas() > 0) {
             edittran.setText(Float.toString(orginaluser.getGas()));
         }
         buttontran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edittran.getText().toString().trim().equalsIgnoreCase("")) {
+                if (edittran.getText().toString().trim().equalsIgnoreCase("")) {
                     edittran.setError("Input");
-                }
-                else if (Float.parseFloat(edittran.getText().toString())<0){
+                } else if (Float.parseFloat(edittran.getText().toString()) < 0) {
                     edittran.setError("No negative!");
-                }
-
-                    else{
+                } else {
 
 
                     Intent a = new Intent(weektransport.this, loadingsurvey.class);

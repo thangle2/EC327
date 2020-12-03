@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 public class monthlybill extends AppCompatActivity {
-    Button buttonbill,buttonhousepayment,buttonhouseinsurance,buttoncarpayment,buttonhealthinsurance,backbill;
-    EditText edithousepayment,edithouseinsurance,editcarpayment,edithealthinsurance;
-    EditText[] amountedit= new EditText[4];
+    Button buttonbill, buttonhousepayment, buttonhouseinsurance, buttoncarpayment, buttonhealthinsurance, backbill;
+    EditText edithousepayment, edithouseinsurance, editcarpayment, edithealthinsurance;
+    EditText[] amountedit = new EditText[4];
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -24,38 +24,39 @@ public class monthlybill extends AppCompatActivity {
         setContentView(R.layout.activity_monthlybill);
 
         //constructor
-        buttonhousepayment=findViewById(R.id.buttonhousepayment);
-        buttonhouseinsurance=findViewById(R.id.buttonhouseinsurance);
-        buttoncarpayment=findViewById(R.id.buttoncarpayment);
-        buttonhealthinsurance=findViewById(R.id.buttonhealthinsurance);
-        buttonbill=findViewById(R.id.buttonbill);
-        backbill=findViewById(R.id.backbill);
-        edithousepayment=findViewById(R.id.edithousepayment);
-        amountedit[0]=edithousepayment;
-        edithouseinsurance=findViewById(R.id.editouseinsurance);
-        amountedit[1]=edithouseinsurance;
-        editcarpayment=findViewById(R.id.editcarpayment);
-        amountedit[2]=editcarpayment;
-        edithealthinsurance=findViewById(R.id.edithealthinsurance);
-        amountedit[3]=edithealthinsurance;
-        Drawable original=edithouseinsurance.getBackground();
+        buttonhousepayment = findViewById(R.id.buttonhousepayment);
+        buttonhouseinsurance = findViewById(R.id.buttonhouseinsurance);
+        buttoncarpayment = findViewById(R.id.buttoncarpayment);
+        buttonhealthinsurance = findViewById(R.id.buttonhealthinsurance);
+        buttonbill = findViewById(R.id.buttonbill);
+        backbill = findViewById(R.id.backbill);
+        edithousepayment = findViewById(R.id.edithousepayment);
+        amountedit[0] = edithousepayment;
+        edithouseinsurance = findViewById(R.id.editouseinsurance);
+        amountedit[1] = edithouseinsurance;
+        editcarpayment = findViewById(R.id.editcarpayment);
+        amountedit[2] = editcarpayment;
+        edithealthinsurance = findViewById(R.id.edithealthinsurance);
+        amountedit[3] = edithealthinsurance;
+        Drawable original = edithouseinsurance.getBackground();
 
-        Intent i=getIntent();
+        Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
-        backbill.setOnClickListener(new View.OnClickListener(){
+        backbill.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent a= new Intent(monthlybill.this,monthlybudget.class);
+            public void onClick(View v) {
+                Intent a = new Intent(monthlybill.this, monthlybudget.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                a.putExtra("userObject",orginaluser);
+                a.putExtra("userObject", orginaluser);
                 startActivity(a);
             }
         });
 
 
     }
-    public void buttonreset( Button button, EditText edittext, String string,Drawable original){
+
+    public void buttonreset(Button button, EditText edittext, String string, Drawable original) {
         button.setBackgroundResource(R.drawable.bgbtngreen);
         edittext.setHint(string);
         edittext.setHintTextColor(Color.parseColor("#696969"));
@@ -63,7 +64,8 @@ public class monthlybill extends AppCompatActivity {
         edittext.setEnabled(true);
         edittext.setBackgroundDrawable(original);
     }
-    public void buttonpressed (Button button, EditText edittext, String string){
+
+    public void buttonpressed(Button button, EditText edittext, String string) {
 
         button.setBackgroundResource(R.drawable.buttoncheck);
         edittext.setHint(string);
@@ -72,9 +74,10 @@ public class monthlybill extends AppCompatActivity {
         edittext.setEnabled(false);
 
     }
-    public boolean checkinput(EditText[] arrayinput){
-        for(int i=0; i<arrayinput.length;i++){
-            if(arrayinput[i].getText().toString().trim().equalsIgnoreCase("") && arrayinput[i].isEnabled()){
+
+    public boolean checkinput(EditText[] arrayinput) {
+        for (int i = 0; i < arrayinput.length; i++) {
+            if (arrayinput[i].getText().toString().trim().equalsIgnoreCase("") && arrayinput[i].isEnabled()) {
                 return false;
             }
         }
