@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,8 +17,9 @@ import android.widget.Toast;
 public class information extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner mySpinner;
     Button buttonsurvey;
-    EditText editfirstname, editage, editlastname;
-    EditText[] inputarray = new EditText[4];
+    TypeWriter informationtext;
+    EditText editfirstname, editage;
+    EditText[] inputarray = new EditText[2];
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -31,12 +33,7 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
         inputarray[0] = editage;
         editfirstname = findViewById(R.id.editfirstname);
         inputarray[1] = editfirstname;
-        editlastname = findViewById(R.id.editlastname);
-        inputarray[2] = editlastname;
-        /*
-        editusername = findViewById(R.id.editusername);
-        inputarray[3] = editusername;
-        */
+        informationtext=findViewById(R.id.informationtext);
 
         //grabbing object
         Intent i = getIntent();
@@ -47,14 +44,6 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
         if (!orginaluser.getFirstName().equals("")) {
             editfirstname.setText(orginaluser.getFirstName());
         }
-        if (!orginaluser.getLastName().equals("")) {
-            editlastname.setText(orginaluser.getLastName());
-        }
-        /*
-        if (!orginaluser.getUsername().equals("")) {
-            editusername.setText(orginaluser.getUsername());
-        }
-        */
 
 
         //making spinner
@@ -77,19 +66,26 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View v) {
                 if (checkinput(inputarray)) {
-                    orginaluser.setAge(Integer.parseInt(editage.getText().toString()));
-                    orginaluser.setFirstName(editfirstname.getText().toString());
-                    orginaluser.setLastName(editlastname.getText().toString());
-                    //orginaluser.setUsername(editusername.getText().toString());
-                    orginaluser.setState(mySpinner.getSelectedItem().toString());
-                    Intent a = new Intent(information.this, monthlybudget.class);
-                    a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                    a.putExtra("userObject", orginaluser);
-                    startActivity(a);
-                } else if (editfirstname.getText().toString().matches(".*\\d.*")) {
-                    editfirstname.setError("No Numbers");
-                } else if (editlastname.getText().toString().matches(".*\\d.*")) {
-                    editlastname.setError("No Numbers");
+                    String result="Hello "+editfirstname.getText().toString()+"!";
+                    informationtext.setText("");
+                    informationtext.setCharacterDelay(50);
+                    informationtext.animatedText(result);
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            orginaluser.setAge(Integer.parseInt(editage.getText().toString()));
+                            orginaluser.setFirstName(editfirstname.getText().toString());
+
+                            //orginaluser.setUsername(editusername.getText().toString());
+                            orginaluser.setState(mySpinner.getSelectedItem().toString());
+                            Intent a = new Intent(information.this, monthlybudget.class);
+                            a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                            a.putExtra("userObject", orginaluser);
+                            startActivity(a);
+                        }
+                    }, 2000);
+
                 } else if (Integer.parseInt(editage.getText().toString()) > 90 || Integer.parseInt(editage.getText().toString()) < 0) {
                     editage.setError("?");
                 } else {

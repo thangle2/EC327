@@ -1,8 +1,13 @@
 package com.example.ec327;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("serial")
 public class Financials extends User implements Serializable {
@@ -51,15 +56,36 @@ public class Financials extends User implements Serializable {
         this.monthlyIncome = monthlyIncome;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setSubscription(String name, float value) {
+        for (Map.Entry mapElement : subscription.entrySet()) {
+            if(name==mapElement.getKey().toString()){
+                subscription.replace(name,value);
+                return;
+            }
+        }
         subscription.put(name, value);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setInvestment(String name, float value) {
+        for (Map.Entry mapElement : investment.entrySet()) {
+            if(name==mapElement.getKey().toString()){
+                investment.replace(name,value);
+                return;
+            }
+        }
         investment.put(name, value);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setBills(String name, float value) {
+        for (Map.Entry mapElement : bills.entrySet()) {
+            if(name==mapElement.getKey().toString()){
+                bills.replace(name,value);
+                return;
+            }
+        }
         bills.put(name, value);
     }
 

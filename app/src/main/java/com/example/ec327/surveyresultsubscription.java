@@ -29,9 +29,10 @@ public class surveyresultsubscription extends AppCompatActivity {
         float total = (float) 0.0;
         for (Map.Entry mapElement : orginaluser.subscription.entrySet()) {
             String name = (String) mapElement.getKey();
+            String output = name.substring(0, 1).toUpperCase() + name.substring(1);
             float value = (float) mapElement.getValue();
             total = total + value;
-            result1 = result1 + (name + ": $" + Float.toString(value) + "\n");
+            result1 = result1 + (output + ": $" + Float.toString(value) + "\n");
         }
 
         int amount = orginaluser.subscription.size() * 75;

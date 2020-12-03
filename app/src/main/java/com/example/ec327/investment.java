@@ -1,10 +1,12 @@
 package com.example.ec327;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,9 +43,20 @@ public class investment extends AppCompatActivity {
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
+
+        editinvestmentvalue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    editinvestmentvalue.setText("$");
+                    editinvestmentvalue.setSelection(1);
+                }
+            }
+        });
         submitinvestment.setOnClickListener(new View.OnClickListener() {
             int counter = 0;
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 if (!checkinput(inputamountz)) {
@@ -52,25 +65,23 @@ public class investment extends AppCompatActivity {
                             editText.setError("Input");
                         }
                     }
-                } else if (Float.parseFloat(editinvestmentvalue.getText().toString()) < 0) {
-                    editinvestmentvalue.setError("No Negative");
                 } else if (orginaluser.investment.size() >= 10) {
                     editinvestmentname.setError("Max: 10!");
-                } else if (already(orginaluser, editinvestmentname.getText().toString()) && counter == 0) {
+                } else if (already(orginaluser, editinvestmentname.getText().toString().toLowerCase()) && counter == 0) {
                     editinvestmentname.setError("Already Input! Press again in resubmit!");
                     counter = 1;
-                } else if (already(orginaluser, editinvestmentname.getText().toString()) && counter == 1) {
-                    String result = "Subscription: " + editinvestmentname.getText().toString() + "\nValue: " + editinvestmentvalue.getText().toString();
+                } else if (already(orginaluser, editinvestmentname.getText().toString().toLowerCase()) && counter == 1) {
+                    String result = "Subscription: " + editinvestmentname.getText().toString() + "\nValue: $" + editinvestmentvalue.getText().toString().substring(1);
                     textminiinvestment.setText(result);
-                    orginaluser.setSubscription(editinvestmentname.getText().toString(), Float.parseFloat(editinvestmentvalue.getText().toString()));
+                    orginaluser.setInvestment(editinvestmentname.getText().toString().toLowerCase(), Float.parseFloat(editinvestmentvalue.getText().toString().substring(1)));
                     editinvestmentname.setError(null);
                     editinvestmentname.setText("");
                     editinvestmentvalue.setText("");
                     counter = 0;
                 } else {
-                    String result = "Investment: " + editinvestmentname.getText().toString() + "\nValue: " + editinvestmentvalue.getText().toString();
+                    String result = "Investment: " + editinvestmentname.getText().toString() + "\nValue: $" + editinvestmentvalue.getText().toString().substring(1);
                     textminiinvestment.setText(result);
-                    orginaluser.setInvestment(editinvestmentname.getText().toString(), Float.parseFloat(editinvestmentvalue.getText().toString()));
+                    orginaluser.setInvestment(editinvestmentname.getText().toString().toLowerCase(), Float.parseFloat(editinvestmentvalue.getText().toString().substring(1)));
                     editinvestmentname.setText("");
                     editinvestmentvalue.setText("");
 
