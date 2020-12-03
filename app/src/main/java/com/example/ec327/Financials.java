@@ -176,7 +176,7 @@ public class Financials extends User implements Serializable {
 
     public float monthlyBudget()
     {
-        float total = this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - (30/7)*this.getTransportation() - (30/7)*this.weeklyGroceries;
+        float total = this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries;
 
         return total;
 
