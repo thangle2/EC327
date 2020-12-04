@@ -1,11 +1,13 @@
 package com.example.ec327;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -40,14 +42,18 @@ public class Home extends AppCompatActivity {
         rotate_end = AnimationUtils.loadAnimation(this, R.anim.rotate_end_anim);
         from_bottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim);
         to_bottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom);
+        Intent i = getIntent();
+        Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         pen = findViewById(R.id.pen);
         profile = findViewById(R.id.profile);
         add = findViewById(R.id.add);
         settings = findViewById(R.id.settings);
 
+
+         Savedata(orginaluser);
         dailyamount.setText("");
         dailyamount.setCharacterDelay(50);
-        dailyamount.animatedText("$$$$$$$");
+        dailyamount.animatedText("%"+Float.toString(orginaluser.weeklyBudget()));
 
         pen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,5 +130,18 @@ public class Home extends AppCompatActivity {
             add.setEnabled(false);
 
         }
+    }
+    private void Savedata(Financials object){
+        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(object);
+        editor.putString("user",json);
+        editor.apply();
+    }
+    public String loadData(){
+        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
+        String result=sharedPreferences.getString("user",null);
+        return result;
     }
 }

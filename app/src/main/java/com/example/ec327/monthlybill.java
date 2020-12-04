@@ -64,21 +64,22 @@ public class monthlybill extends AppCompatActivity {
                     }
                 } else if (orginaluser.subscription.size() >= 10) {
                     monthlybillsnames.setError("Max: 10!");
-                } else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 0) {
+                }
+                 else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 0) {
                     monthlybillsnames.setError("Already Input! Press again in resubmit!");
                     counter = 1;
                 } else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 1) {
-                    String result = "Subscription: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
+                    String result = "Bill: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
                     textviewbill.setText(result);
-                    orginaluser.setSubscription(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
+                    orginaluser.setBills(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
                     monthlybillsnames.setError(null);
                     monthlybillsnames.setText("");
                     monthbillsvalue.setText("");
                     counter = 0;
                 } else {
-                    String result = "Subscription: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
+                    String result = "Bill: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
                     textviewbill.setText(result);
-                    orginaluser.setSubscription(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
+                    orginaluser.setBills(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
                     monthlybillsnames.setText("");
                     monthbillsvalue.setText("");
 
@@ -108,33 +109,14 @@ public class monthlybill extends AppCompatActivity {
 
     }
 
-    public void buttonreset(Button button, EditText edittext, String string, Drawable original) {
-        button.setBackgroundResource(R.drawable.bgbtngreen);
-        edittext.setHint(string);
-        edittext.setHintTextColor(Color.parseColor("#696969"));
-        edittext.setBackgroundColor(Color.parseColor("#F5FAFA"));
-        edittext.setEnabled(true);
-        edittext.setBackgroundDrawable(original);
-    }
-
-    public void buttonpressed(Button button, EditText edittext, String string) {
-
-        button.setBackgroundResource(R.drawable.buttoncheck);
-        edittext.setHint(string);
-        edittext.setHintTextColor(Color.parseColor("#000000"));
-        edittext.setBackgroundColor(Color.parseColor("#E6A9A9"));
-        edittext.setEnabled(false);
-
-    }
-    public boolean already(Financials financials, String string){
-        for (Map.Entry mapElement : financials.bills.entrySet()) {
+    public boolean already(Financials orginaluser, String string) {
+        for (Map.Entry mapElement : orginaluser.bills.entrySet()) {
             String name = (String) mapElement.getKey();
-            float value = (float) mapElement.getValue();
-            if(name==string){
-                return false;
+            if (name.equals(string)) {
+                return true;
             }
         }
-        return  true;
+        return false;
 
     }
 

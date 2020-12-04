@@ -26,12 +26,13 @@ public class MainActivity extends AppCompatActivity {
     int test;
 
     public static final String SHARED_PREFS = "sharedPrefs";
-    private Financials userfinancials;
-
+    private Financials orginaluser;
+    SharedPreferences mPrefs=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String json=loadData();
         //test=1;
         test = 1; //for home screen access
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         ivSplash.startAnimation(atg);
 
         buttonsplash.startAnimation(texttwo);
-        if (test == 1) {
+        if (json==null) {
             buttonsplash.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -60,39 +61,32 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        if (test == 2) {
+       else if  (json!=null) {
+           Gson gson = new Gson();
+           Financials orginaluser=gson.fromJson(json,Financials.class);
             buttonsplash.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent a = new Intent(MainActivity.this, Home.class);
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                    a.putExtra("userObject", orginaluser);
                     startActivity(a);
                 }
             });
         }
     }
-
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(userfinancials);
-        editor.putString("User", json);
+    private void Savedata(Financials object){
+        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(object);
+        editor.putString("user",json);
         editor.apply();
     }
-
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("User", null);
-        Type type = new TypeToken<Financials>() {
-        }.getType();
-        userfinancials = gson.fromJson(json, type);
-
-        if (userfinancials == null) {
-            userfinancials = new Financials();
-        }
+    public String loadData(){
+        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
+        String result=sharedPreferences.getString("user",null);
+        return result;
     }
 
 }

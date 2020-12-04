@@ -19,7 +19,7 @@ public class User implements Serializable {
     }
 
     public boolean isEmpty() {
-        if (age == 0) {
+        if (age == 0 && firstName.equals("") && lastName.equals("")) {
             return true;
         } else {
             return false;

@@ -18,6 +18,8 @@ public class Financials extends User implements Serializable {
     protected float netWorth;
     protected float debt;
     protected float totalInvestment;
+    protected float monthlybugdet;
+    protected float weeklybudget;
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();     //Uncategorized Expenses
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
     HashMap<String, Float> investment = new HashMap<String, Float>();              //Individuals' Investment (not savings) monthly
@@ -53,6 +55,13 @@ public class Financials extends User implements Serializable {
 
     public void setMonthlyIncome(float monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
+    }
+    public boolean isEmpty() {
+        if (age == 0 && firstName.equals("") && lastName.equals("")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -177,15 +186,20 @@ public class Financials extends User implements Serializable {
     public float monthlyBudget()
     {
         float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (0.1*monthlyIncome));
-
-        return total;
+        monthlybugdet=total;
+        return monthlybugdet;
 
     }
     public float monthlyBudget(float percentage)
     {
         float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (percentage/100*monthlyIncome));
+        monthlybugdet=total;
+        return monthlybugdet;
 
-        return total;
+    }
+    public float weeklyBudget(){
+        weeklybudget= ((float)monthlybugdet/(float)4.0);
+        return weeklybudget;
 
     }
 
