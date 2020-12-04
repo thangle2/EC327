@@ -22,8 +22,8 @@ public class Financials extends User implements Serializable {
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
     HashMap<String, Float> investment = new HashMap<String, Float>();              //Individuals' Investment (not savings) monthly
     HashMap<String, Float> bills = new HashMap<String, Float>();
-    HashMap<String, dailySpending> weeklySpending = new HashMap<String, dailySpending>();
-    ArrayList<dailySpending> allWeeklySpending = new ArrayList<>();
+    HashMap<String, weeklySpending> MonthlySpending = new HashMap<String, weeklySpending>();
+    ArrayList<weeklySpending> allWeeklySpending = new ArrayList<>();
 
     public Financials() {
         //username = "";
@@ -176,7 +176,14 @@ public class Financials extends User implements Serializable {
 
     public float monthlyBudget()
     {
-        float total = this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries;
+        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (0.1*monthlyIncome));
+
+        return total;
+
+    }
+    public float monthlyBudget(float percentage)
+    {
+        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (percentage/100*monthlyIncome));
 
         return total;
 

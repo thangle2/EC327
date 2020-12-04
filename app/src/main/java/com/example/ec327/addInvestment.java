@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Map;
+
 public class addInvestment extends AppCompatActivity {                //
 
     TextView displayvalue;
@@ -35,8 +37,6 @@ public class addInvestment extends AppCompatActivity {                //
                 //checking user input: Amount
                 else if (amountinput.getText().toString().trim().equalsIgnoreCase("")) {
                     amountinput.setError("Remember to enter a number!");
-                } else if (Float.parseFloat(amountinput.getText().toString()) < 0) {
-                    amountinput.setError("No negative!");
                 } else {
                     calculateTotalMonthlyInvestment();                 //Calculate % spending relative to income
                 }
