@@ -6,7 +6,6 @@ import java.io.Serializable;
 public class User implements Serializable {
     protected String firstName;
     protected String lastName;
-    //protected String username;
     protected int age;//
     protected String state;
 
