@@ -24,6 +24,8 @@ import androidx.appcompat.widget.ButtonBarLayout;
 
 import android.view.View;
 
+import java.util.Map;
+
 public class Home extends AppCompatActivity {
 
     TypeWriter dailyamount;
@@ -31,9 +33,12 @@ public class Home extends AppCompatActivity {
     FloatingActionButton pen, profile, add, settings;
     Boolean clicked = true;
     Animation rotate_open, rotate_end, from_bottom, to_bottom;
-
+    String result="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         dailyamount = findViewById(R.id.dailyamount);
@@ -44,17 +49,50 @@ public class Home extends AppCompatActivity {
         to_bottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom);
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
+
+
         pen = findViewById(R.id.pen);
         profile = findViewById(R.id.profile);
         add = findViewById(R.id.add);
         settings = findViewById(R.id.settings);
-
-
          Savedata(orginaluser);
         dailyamount.setText("");
         dailyamount.setCharacterDelay(50);
-        dailyamount.animatedText("%"+Float.toString(orginaluser.weeklyBudget()));
+        dailyamount.animatedText("$"+Float.toString(orginaluser.weeklyBudget()));
+        if(orginaluser.weeklySpending.size()>0) {
+            if(orginaluser.weeklySpending.size()>15) {
+                int counter=0;
+                result="";
+                for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
+                    if(counter>=orginaluser.weeklySpending.size()-15) {
+                        String name = (String) entry.getKey();
+                        Float value = (Float) entry.getValue();
+                        result = result + "-" + name + " : $" + Float.toString(value) + "\n";
 
+                    }
+                    counter++;
+                }
+                totalamount.setCharacterDelay(35);
+                totalamount.setText("");
+                totalamount.animatedText(result);
+
+            }
+            else {
+                result="";
+                for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
+                            String name = (String) entry.getKey();
+                            Float value = (Float) entry.getValue();
+                            result = result + "-" + name + " : $" + Float.toString(value) + "\n";
+
+
+
+                }
+
+            }
+            totalamount.setCharacterDelay(35);
+            totalamount.setText("");
+            totalamount.animatedText(result);
+        }
         pen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +105,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent a = new Intent(Home.this, addspending.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                a.putExtra("userObject", orginaluser);
                 startActivity(a);
             }
         });

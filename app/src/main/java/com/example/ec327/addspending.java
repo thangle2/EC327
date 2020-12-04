@@ -29,6 +29,16 @@ public class addspending extends AppCompatActivity {                //
 
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
+
+        amountinput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    amountinput.setText("$");
+                    amountinput.setSelection(1);
+                }
+            }
+        });
         submitspending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +50,9 @@ public class addspending extends AppCompatActivity {                //
                 else if (amountinput.getText().toString().trim().equalsIgnoreCase("")) {
                     amountinput.setError("Remember to enter a number!");
                 } else {
+                    orginaluser.setWeeklySpending(typeinput.getText().toString(),Float.parseFloat(amountinput.getText().toString().substring(1)));
                     calculatepercentage(orginaluser);         //Calculate % spending relative to daily limit
+
                 }
             }
         });
@@ -49,17 +61,26 @@ public class addspending extends AppCompatActivity {                //
             public void onClick(View v) {
                 Intent a = new Intent(addspending.this, Home.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                a.putExtra("userObject", orginaluser);
                 startActivity(a);
             }
         });
     }
     private void calculatepercentage(Financials financials) {
         //get entered texts from the amountinput
-        double num1 = Double.parseDouble(amountinput.getText().toString());
+        double num1 = Double.parseDouble(amountinput.getText().toString().substring(1));
         //do the calculation
         double num2 = financials.weeklyBudget(); //num2: number from daily limit
         double calculated = (num1 / num2);
         //display value on screen.
-        displayvalue.setText(String.valueOf("You spend " + calculated + "% of your daily amount"));
+        displayvalue.setText(String.valueOf("You spend " + round(calculated,2) + "% of your daily amount"));
+    }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }

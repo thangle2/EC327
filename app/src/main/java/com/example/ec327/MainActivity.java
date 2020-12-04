@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String json=loadData();
-        //test=1;
-        test = 1; //for home screen access
-
         //constructors
 
         buttonsplash = findViewById(R.id.buttonsplash);
@@ -87,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
         String result=sharedPreferences.getString("user",null);
         return result;
+    }
+    public void deleteData(String key){
+        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
+        sharedPreferences.edit().remove(key).apply();
+
     }
 
 }
