@@ -26,6 +26,9 @@ public class addspending extends AppCompatActivity {                //
         displayvalue = findViewById(R.id.displayvalue);
         addreturnhome = findViewById(R.id.addreturnhome);
 
+
+        Intent i = getIntent();
+        Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         submitspending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,10 +39,8 @@ public class addspending extends AppCompatActivity {                //
                 //checking user input: Amount
                 else if (amountinput.getText().toString().trim().equalsIgnoreCase("")) {
                     amountinput.setError("Remember to enter a number!");
-                } else if (Float.parseFloat(amountinput.getText().toString()) < 0) {
-                    amountinput.setError("No negative!");
                 } else {
-                    calculatepercentage();         //Calculate % spending relative to daily limit
+                    calculatepercentage(orginaluser);         //Calculate % spending relative to daily limit
                 }
             }
         });
@@ -52,11 +53,11 @@ public class addspending extends AppCompatActivity {                //
             }
         });
     }
-    private void calculatepercentage() {
+    private void calculatepercentage(Financials financials) {
         //get entered texts from the amountinput
         double num1 = Double.parseDouble(amountinput.getText().toString());
         //do the calculation
-        double num2 = 2500.00; //num2: number from daily limit
+        double num2 = financials.weeklyBudget(); //num2: number from daily limit
         double calculated = (num1 / num2);
         //display value on screen.
         displayvalue.setText(String.valueOf("You spend " + calculated + "% of your daily amount"));
