@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
        else if  (json!=null) {
-           Gson gson = new Gson();
+           Gson gson = new Gson();   //class err
            Financials orginaluser=gson.fromJson(json,Financials.class);
             buttonsplash.setOnClickListener(new View.OnClickListener() {
                 @Override
