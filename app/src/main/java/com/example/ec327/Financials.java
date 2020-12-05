@@ -206,5 +206,4 @@ public class Financials extends User implements Serializable {
         this.netWorth =  (savings + totalInvestment - debt);
     }
 
-
 }
