@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
 import android.text.BoringLayout;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -30,6 +31,7 @@ public class Home extends AppCompatActivity {
 
     TypeWriter dailyamount;
     TypeWriter totalamount;
+    TypeWriter hello;
     FloatingActionButton pen, profile, add, settings;
     Boolean clicked = true;
     Animation rotate_open, rotate_end, from_bottom, to_bottom;
@@ -42,6 +44,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         dailyamount = findViewById(R.id.dailyamount);
+        hello=findViewById(R.id.hello);
         totalamount = findViewById(R.id.totalamount);
         rotate_open = AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim);
         rotate_end = AnimationUtils.loadAnimation(this, R.anim.rotate_end_anim);
@@ -49,50 +52,69 @@ public class Home extends AppCompatActivity {
         to_bottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom);
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
-
+        String mainresult="\nWeekly Budget: $"+Float.toString(orginaluser.weeklyBudget())+"\n\nAlready Spent: $"+Float.toString(orginaluser.getWeeklySpending())+"\n\nAmount left: $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending());
 
         pen = findViewById(R.id.pen);
         profile = findViewById(R.id.profile);
         add = findViewById(R.id.add);
         settings = findViewById(R.id.settings);
          Savedata(orginaluser);
-        dailyamount.setText("");
-        dailyamount.setCharacterDelay(50);
-        dailyamount.animatedText("$"+Float.toString(orginaluser.weeklyBudget()));
-        if(orginaluser.weeklySpending.size()>0) {
-            if(orginaluser.weeklySpending.size()>15) {
-                int counter=0;
-                result="";
-                for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
-                    if(counter>=orginaluser.weeklySpending.size()-15) {
-                        String name = (String) entry.getKey();
-                        Float value = (Float) entry.getValue();
-                        result = result + "-" + name + " : $" + Float.toString(value) + "\n";
+
+
+         hello.setText("");
+         hello.setCharacterDelay(35);
+         hello.animatedText("Hello "+orginaluser.getFirstName());
+        final Handler handler2=new Handler();
+        handler2.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                dailyamount.setText("");
+                dailyamount.setCharacterDelay(35);
+                dailyamount.animatedText(mainresult);
+            }
+        },(long) 750);
+
+        final Handler handler=new Handler();
+        handler.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                if(orginaluser.weeklySpending.size()>0) {
+                    if(orginaluser.weeklySpending.size()>15) {
+                        int counter=0;
+                        result="Last 15 Items:\n\n";
+                        for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
+                            if(counter>=orginaluser.weeklySpending.size()-15) {
+                                String name = (String) entry.getKey();
+                                Float value = (Float) entry.getValue();
+                                result = result + "-" + name + " : $" + Float.toString(value) + "\n";
+
+                            }
+                            counter++;
+                        }
+                        totalamount.setCharacterDelay(35);
+                        totalamount.setText("");
+                        totalamount.animatedText(result);
 
                     }
-                    counter++;
-                }
-                totalamount.setCharacterDelay(35);
-                totalamount.setText("");
-                totalamount.animatedText(result);
-
-            }
-            else {
-                result="";
-                for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
+                    else {
+                        result="Last "+Integer.toString(orginaluser.weeklySpending.size())+" Items:\n\n";
+                        for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
                             String name = (String) entry.getKey();
                             Float value = (Float) entry.getValue();
                             result = result + "-" + name + " : $" + Float.toString(value) + "\n";
 
 
 
-                }
+                        }
 
+                    }
+                    totalamount.setCharacterDelay(35);
+                    totalamount.setText("");
+                    totalamount.animatedText(result);
+                }
             }
-            totalamount.setCharacterDelay(35);
-            totalamount.setText("");
-            totalamount.animatedText(result);
-        }
+        },(long) 3200);
+
         pen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

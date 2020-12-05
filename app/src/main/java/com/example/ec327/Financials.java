@@ -193,7 +193,15 @@ public class Financials extends User implements Serializable {
         return weeklybudget;
 
     }
+    public float getWeeklySpending(){
+        float result=0;
+        for (Map.Entry<String, Float> entry:weeklySpending.entrySet()) {
+            Float value = (Float) entry.getValue();
+            result= result +value;
 
+        }
+        return result;
+    }
     public void calcNetWorth (){
         this.netWorth =  (savings + totalInvestment - debt);
     }
