@@ -30,6 +30,8 @@ public class Financials extends User implements Serializable {
     protected Date startday;
     protected Date currentday;
     protected long howmanydays;
+    protected int spendingtoomuch;
+    protected float weeklysavings;
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();     //Uncategorized Expenses
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
     HashMap<String, Float> investment = new HashMap<String, Float>();              //Individuals' Investment (not savings) monthly
@@ -45,7 +47,17 @@ public class Financials extends User implements Serializable {
         savings = 0;
         debt = 0;
         totalInvestment = 0;
+        spendingtoomuch=0;
         last15=new String[15];
+        weeklysavings=0;
+    }
+    public float howmuchweeklyspend(){
+        float result=0;
+        for (TreeMap.Entry<String, Float> entry: weeklySpending.entrySet()) {
+            Float value = (Float) entry.getValue();
+            result+=value;
+        }
+        return result;
     }
 
     public void setFirstday(){
@@ -63,12 +75,27 @@ public class Financials extends User implements Serializable {
         howmanydays=days;
     }
     public void isittime(){
+        differencesinday();
         if(howmanydays==(allWeeklySpending.size())*7){
             submitWeeklySpending(weeklySpending);
+            updateweeklybudget();
         }
     }
     public void submitWeeklySpending(TreeMap<String,Float> weeklyspending){
         allWeeklySpending.add(weeklyspending);
+    }
+    public void updateweeklybudget(){
+        resetsavings();
+        if(howmuchweeklyspend()-weeklybudget>0){
+            weeklybudget=weeklybudget-(howmuchweeklyspend()-weeklybudget);
+        }
+        else if (howmuchweeklyspend()-weeklybudget>0){
+            weeklysavings=howmuchweeklyspend()-weeklybudget;
+
+        }
+    }
+    public void resetsavings(){
+        weeklysavings=0;
     }
 
     public float getDebt() { return this.debt; }
@@ -214,6 +241,9 @@ public class Financials extends User implements Serializable {
         monthlybugdet=total;
         return monthlybugdet;
 
+    }
+    public float getWeeklybudget(){
+        return weeklybudget;
     }
     public float weeklyBudget(){
         weeklybudget= ((float)monthlybugdet/(float)4.0);

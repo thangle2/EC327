@@ -55,9 +55,18 @@ public class Home extends AppCompatActivity {
         to_bottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom);
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
+        orginaluser.setCurrentday();
+        orginaluser.isittime();
         String mainresult="Day: "+Long.toString(orginaluser.howmanydays)+"\nWeekly Budget: $"+Float.toString(orginaluser.weeklyBudget())+"\nAlready Spent: $"+Float.toString(orginaluser.getWeeklySpending())+"\nAmount left: $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending());
-        if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<(orginaluser.weeklyBudget()*0.1)){
+        if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<0){
+            mainresult=mainresult+"\n\nThe overspending will bleed to next week!";
+        }
+        else if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<(orginaluser.weeklyBudget()*0.1)){
             mainresult=mainresult+"\n\nStop Spending! You only have 10% of budget left!";
+        }
+
+        else if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()>0){
+            mainresult=mainresult+"\n\nYou are saving $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending())+" this week!";
         }
         pen = findViewById(R.id.pen);
         profile = findViewById(R.id.profile);
@@ -73,7 +82,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void run() {
                 dailyamount.setText("");
-                dailyamount.setCharacterDelay(35);
+                dailyamount.setCharacterDelay(25);
                 dailyamount.animatedText(finalMainresult);
             }
         },(long) 750);
@@ -117,7 +126,7 @@ public class Home extends AppCompatActivity {
                     totalamount.animatedText(result);
                 }
             }
-        },(long) 5500);
+        },(long) 4000);
 
         pen.setOnClickListener(new View.OnClickListener() {
             @Override
