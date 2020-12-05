@@ -1,5 +1,7 @@
 package com.example.ec327;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import androidx.appcompat.widget.ButtonBarLayout;
 import android.view.View;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Home extends AppCompatActivity {
 
@@ -52,25 +55,26 @@ public class Home extends AppCompatActivity {
         to_bottom = AnimationUtils.loadAnimation(this, R.anim.to_bottom);
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
-        String mainresult="\nWeekly Budget: $"+Float.toString(orginaluser.weeklyBudget())+"\n\nAlready Spent: $"+Float.toString(orginaluser.getWeeklySpending())+"\n\nAmount left: $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending());
-
+        String mainresult="Day: "+Long.toString(orginaluser.howmanydays)+"\nWeekly Budget: $"+Float.toString(orginaluser.weeklyBudget())+"\nAlready Spent: $"+Float.toString(orginaluser.getWeeklySpending())+"\nAmount left: $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending());
+        if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<(orginaluser.weeklyBudget()*0.1)){
+            mainresult=mainresult+"\n\nStop Spending! You only have 10% of budget left!";
+        }
         pen = findViewById(R.id.pen);
         profile = findViewById(R.id.profile);
         add = findViewById(R.id.add);
         settings = findViewById(R.id.settings);
-         Savedata(orginaluser);
-
-
+        Savedata(orginaluser);
          hello.setText("");
          hello.setCharacterDelay(35);
          hello.animatedText("Hello "+orginaluser.getFirstName());
         final Handler handler2=new Handler();
+        String finalMainresult = mainresult;
         handler2.postDelayed(new Runnable(){
             @Override
             public void run() {
                 dailyamount.setText("");
                 dailyamount.setCharacterDelay(35);
-                dailyamount.animatedText(mainresult);
+                dailyamount.animatedText(finalMainresult);
             }
         },(long) 750);
 
@@ -81,8 +85,8 @@ public class Home extends AppCompatActivity {
                 if(orginaluser.weeklySpending.size()>0) {
                     if(orginaluser.weeklySpending.size()>15) {
                         int counter=0;
-                        result="Last 15 Items:\n\n";
-                        for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
+                        result="\nLast 15 Items:\n";
+                        for (TreeMap.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
                             if(counter>=orginaluser.weeklySpending.size()-15) {
                                 String name = (String) entry.getKey();
                                 Float value = (Float) entry.getValue();
@@ -97,8 +101,8 @@ public class Home extends AppCompatActivity {
 
                     }
                     else {
-                        result="Last "+Integer.toString(orginaluser.weeklySpending.size())+" Items:\n\n";
-                        for (Map.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
+                        result="\nLast "+Integer.toString(orginaluser.weeklySpending.size())+" Items:\n";
+                        for (TreeMap.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
                             String name = (String) entry.getKey();
                             Float value = (Float) entry.getValue();
                             result = result + "-" + name + " : $" + Float.toString(value) + "\n";
@@ -113,7 +117,7 @@ public class Home extends AppCompatActivity {
                     totalamount.animatedText(result);
                 }
             }
-        },(long) 3200);
+        },(long) 5500);
 
         pen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +130,15 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent a = new Intent(Home.this, addspending.class);
+                a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                a.putExtra("userObject", orginaluser);
+                startActivity(a);
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(Home.this, monthlyspending.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 a.putExtra("userObject", orginaluser);
                 startActivity(a);

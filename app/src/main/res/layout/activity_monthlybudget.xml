@@ -60,7 +60,7 @@
         android:layout_marginBottom="22dp"
         android:ems="15"
         android:hint="Monthly Budget"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/nextmonthlybudget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

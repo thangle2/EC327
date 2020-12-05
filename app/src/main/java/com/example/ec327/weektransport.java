@@ -31,7 +31,15 @@ public class weektransport extends AppCompatActivity {
         buttontran = findViewById(R.id.buttontran);
         backtran = findViewById(R.id.backtran);
         edittran = findViewById(R.id.edittran);
-
+        edittran.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    edittran.setText("$");
+                    edittran.setSelection(1);
+                }
+            }
+        });
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
@@ -41,15 +49,15 @@ public class weektransport extends AppCompatActivity {
         buttontran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edittran.getText().toString().trim().equalsIgnoreCase("")) {
+                if (edittran.getText().toString().substring(1).trim().equalsIgnoreCase("")) {
                     edittran.setError("Input");
-                } else if (Float.parseFloat(edittran.getText().toString()) < 0) {
+                } else if (Float.parseFloat(edittran.getText().toString().substring(1)) < 0) {
                     edittran.setError("No negative!");
                 } else {
 
 
                     Intent a = new Intent(weektransport.this, loadingsurvey.class);
-                    orginaluser.setTransportation(Float.parseFloat(edittran.getText().toString()));
+                    orginaluser.setTransportation(Float.parseFloat(edittran.getText().toString().substring(1)));
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     a.putExtra("userObject", orginaluser);
                     startActivity(a);

@@ -61,7 +61,7 @@
         android:layout_marginEnd="47dp"
         android:layout_marginBottom="11dp"
         android:hint="Value"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/buttonsubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/monthlybillsnames"
