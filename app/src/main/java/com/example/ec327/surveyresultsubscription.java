@@ -63,8 +63,19 @@ public class surveyresultsubscription extends AppCompatActivity {
             }
         }, (long) amountoftime);
 
+        final Handler handler2=new Handler();
+        handler2.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                Intent a = new Intent(surveyresultsubscription.this, surveyresultanalysis .class);
+                a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                a.putExtra("userObject", orginaluser);
+                startActivity(a);
+            }
+        },(long) amountmoretime);
 
     }
+
 
     public static double roundAvoid(double value, int places) {
         double scale = Math.pow(10, places);

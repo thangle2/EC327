@@ -1,12 +1,11 @@
 package com.example.ec327;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class dailySpending {                      //class generates calculations for daily spending
+public class weeklySpending {                    //class generates calculations for daily spending
     ArrayList<Expense> expenses = new ArrayList<Expense>();
 
-    public dailySpending() {                                                  // default constructor
+    public weeklySpending() {                                                  // default constructor
 
     }
 
@@ -29,5 +28,6 @@ public class dailySpending {                      //class generates calculations
             }
         }
     }                        //remove expense
+
 
 }

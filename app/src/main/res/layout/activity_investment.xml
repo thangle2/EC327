@@ -41,7 +41,7 @@
         android:layout_width="354dp"
         android:layout_height="52dp"
         android:layout_marginBottom="2dp"
-        android:text="Input monthly your investment\n( Robinhood,Webull,Thinkorswim,etc)"
+        android:text="Input monthly your investment\n(401k,IRAs,Individual Accounts)"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
