@@ -11,16 +11,16 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="425dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="407dp"
+        android:layout_width="373dp"
+        android:layout_height="422dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="302dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28">
+        app:layout_constraintTop_toBottomOf="@+id/gobackhome">
 
         <com.example.ec327.TypeWriter
             android:id="@+id/showallspending"
@@ -33,21 +33,21 @@
 
     <Button
         android:id="@+id/gobackhome"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="46dp"
-        android:background="@drawable/bgbtngreen"
-        android:gravity="center_horizontal"
-        android:text="Go back home"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:backgroundTint="@color/teal_700"
+        android:layout_width="44dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="351dp"
+        android:layout_marginBottom="669dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_backarrow"
+        android:drawableTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="6dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
