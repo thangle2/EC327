@@ -117,13 +117,6 @@ public class Financials extends User implements Serializable {
     public void setMonthlyIncome(float monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
-    public boolean isEmpty() {
-        if (age == 0 && firstName.equals("") /*&& lastName.equals("")*/) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setSubscription(String name, float value) {
