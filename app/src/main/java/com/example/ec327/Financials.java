@@ -202,9 +202,6 @@ public class Financials extends User implements Serializable {
         return monthlybugdet;
 
     }
-    public float getWeeklybudget(){
-        return weeklybudget;
-    }
     public float weeklyBudget(){
         weeklybudget= ((float)monthlybugdet/(float)((365/12)/7));
         return weeklybudget;
