@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class addspending extends AppCompatActivity {                //
+public class addspending extends AppCompatActivity {
 
     TextView displayvalue;
     Button submitspending, addreturnhome;
@@ -49,10 +49,10 @@ public class addspending extends AppCompatActivity {                //
                 //checking user input: Amount
                 else if (amountinput.getText().toString().trim().equalsIgnoreCase("")) {
                     amountinput.setError("Remember to enter a number!");
-                } else {
+                }
+                else {
                     orginaluser.setWeeklySpending(typeinput.getText().toString(), Float.parseFloat(amountinput.getText().toString().substring(1)));
                     calculatepercentage(orginaluser);         //Calculate % spending relative to daily limit
-
                 }
             }
         });
