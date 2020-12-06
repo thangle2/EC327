@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -30,7 +31,7 @@ public class monthlyspending extends AppCompatActivity {
                 for (TreeMap.Entry<String, Float> entry : buffer.entrySet()) {
                     String name = (String) entry.getKey();
                     Float value = (Float) entry.getValue();
-                    result.append("-").append(name).append(" : $").append(Float.toString(value)).append("\n");
+                    result.append("-").append(name).append(" : $").append(Float.toString(round(value,2))).append("\n");
                 }
             }
             showallspending.setCharacterDelay(25);
@@ -52,5 +53,10 @@ public class monthlyspending extends AppCompatActivity {
             }
         });
 
+    }
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 }

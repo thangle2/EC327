@@ -27,6 +27,7 @@ import androidx.appcompat.widget.ButtonBarLayout;
 
 import android.view.View;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -57,7 +58,7 @@ public class Home extends AppCompatActivity {
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         orginaluser.setCurrentday();
         orginaluser.isittime();
-        String mainresult="Day: "+Long.toString(orginaluser.howmanydays)+"\nWeekly Budget: $"+Float.toString(orginaluser.weeklyBudget())+"\nAlready Spent: $"+Float.toString(orginaluser.getWeeklySpending())+"\nAmount left: $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending());
+        String mainresult="Day: "+Long.toString(orginaluser.howmanydays)+"\nWeekly Budget: $"+Float.toString(round(orginaluser.weeklyBudget(),2))+"\nAlready Spent: $"+Float.toString(round(orginaluser.getWeeklySpending(),2))+"\nAmount left: $"+Float.toString(round(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending(),2));
         if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<0){
             mainresult=mainresult+"\n\nThe overspending will bleed to next week!";
         }
@@ -66,7 +67,7 @@ public class Home extends AppCompatActivity {
         }
 
         else if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()>0){
-            mainresult=mainresult+"\n\nYou are saving $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending())+" this week!";
+            mainresult=mainresult+"\n\nYou are saving $"+Float.toString(round(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending(),2))+" this week!";
         }
         pen = findViewById(R.id.pen);
         profile = findViewById(R.id.profile);
@@ -114,7 +115,7 @@ public class Home extends AppCompatActivity {
                         for (TreeMap.Entry<String, Float> entry: orginaluser.weeklySpending.entrySet()) {
                             String name = (String) entry.getKey();
                             Float value = (Float) entry.getValue();
-                            result = result + "-" + name + " : $" + Float.toString(value) + "\n";
+                            result = result + "-" + name + " : $" + Float.toString(round(value,2)) + "\n";
 
 
 
@@ -148,6 +149,15 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent a = new Intent(Home.this, monthlyspending.class);
+                a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                a.putExtra("userObject", orginaluser);
+                startActivity(a);
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(Home.this,  profile.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 a.putExtra("userObject", orginaluser);
                 startActivity(a);
@@ -226,5 +236,10 @@ public class Home extends AppCompatActivity {
         SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
         String result=sharedPreferences.getString("user",null);
         return result;
+    }
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 }

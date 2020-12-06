@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pigbackgruond"
-    tools:context=".addBill">
-
+    tools:context=".changeBill"
+    android:background="@drawable/pigbackgruond">
     <TextView
         android:id="@+id/addbilltitle"
         android:layout_width="match_parent"
@@ -47,14 +46,14 @@
         android:layout_marginBottom="170dp"
         android:ems="15"
         android:hint="Name"
-        android:inputType="number"
+        android:inputType="text"
         android:textColorHint="@color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintVertical_bias="0.426" />
 
     <EditText
         android:id="@+id/billAmountInput"
@@ -65,14 +64,14 @@
         android:layout_marginBottom="170dp"
         android:ems="15"
         android:hint="Amount"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColorHint="@color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/submitBill"
@@ -96,11 +95,12 @@
         android:id="@+id/displayvalue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="385dp"
-        android:layout_marginBottom="327dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="300dp"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -109,7 +109,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/addreturnhome"
+        android:id="@+id/addreturnhomebill"
         android:layout_width="44dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -123,6 +123,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

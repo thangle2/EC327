@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EC327">
-        <activity android:name=".monthlyspending"></activity>
+        <activity android:name=".changeInvestments"></activity>
+        <activity android:name=".changeSubs" />
+        <activity android:name=".changeBill" />
+        <activity android:name=".profile" />
+        <activity android:name=".monthlyspending" />
         <activity android:name=".surveyresultanalysis" />
         <activity android:name=".addspending" />
         <activity android:name=".surveyresultsubscription" />

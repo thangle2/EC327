@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context=".profile">
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="150dp"
+        android:layout_height="700dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="3dp"
+        android:gravity="right"
+        android:text="Name:\nAge:\nState:\nMonthly Budget:\n\nMonthly Bill:\n\n\n\n\n\nMonthly Subs:\n\n\n\n\n\nMonthly Investment:\n\n\n\n\n\nWeekly Groceries:\n\nWeekly Transport:"
+        android:textAlignment="gravity"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/gobackhomeprofile"
+        app:layout_constraintEnd_toStartOf="@+id/profiletypewriter2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="215dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/changebill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/profiletypewriter1">
+
+        <com.example.ec327.TypeWriter
+            android:id="@+id/showmonthlybill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="215dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/changesub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/changebill">
+
+        <com.example.ec327.TypeWriter
+            android:id="@+id/showmonthlysubs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="215dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/changeinvestment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/changesub">
+
+        <com.example.ec327.TypeWriter
+            android:id="@+id/showmonthlyinvestment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/gobackhomeprofile"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="74dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="38dp"
+        android:background="@drawable/bgbtngreen"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"
+        android:text="Go back home"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/changebill"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:visibility="invisible"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/bgbtngreen"
+        android:gravity="center_horizontal"
+        android:text="Change"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView1" />
+
+    <Button
+        android:id="@+id/changesub"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:visibility="invisible"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="74dp"
+        android:background="@drawable/bgbtngreen"
+        android:gravity="center_horizontal"
+        android:text="Change"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+    <Button
+        android:id="@+id/changeinvestment"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:visibility="invisible"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bgbtngreen"
+        android:gravity="center_horizontal"
+        android:text="Change"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@+id/profiletypewriter2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+
+    <com.example.ec327.TypeWriter
+        android:id="@+id/profiletypewriter1"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="13dp"
+        android:gravity="left"
+        android:textAlignment="gravity"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.ec327.TypeWriter
+        android:id="@+id/profiletypewriter2"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="13dp"
+
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="21dp"
+        android:gravity="left"
+        android:textAlignment="gravity"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/gobackhomeprofile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/changeinvestment" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

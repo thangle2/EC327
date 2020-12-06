@@ -12,7 +12,7 @@
         android:id="@+id/dailyamount"
         android:layout_width="230dp"
         android:layout_height="230dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="165dp"
         android:layout_marginBottom="480dp"
@@ -21,10 +21,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.example.ec327.TypeWriter
         android:layout_width="250dp"
@@ -54,10 +54,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.686" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pen"
