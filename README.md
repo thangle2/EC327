@@ -4,7 +4,7 @@
 
 ## :page_facing_up: General Info 
 The goal of this application is to create a money management tool for people who want to take control of their spending. It provides an overall summary of how much you can spend on a weekly basis, what you are spending, and how much your are saving. (Currency Option Available: USD Only)
-## :mag: How to use
+## :mag_right: How to use
 - New users will take a survey about their monthly/weekly fixed expenses in the beginning 
 - After the survey, the users will see a **Home screen** displays:
 	- Amount of their weekly budget
