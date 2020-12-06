@@ -221,14 +221,8 @@ public class Financials extends User implements Serializable {
         return this.calcTotalAdditionalExpenses() + this.calcTotalBills() + this.calcTotalInvestments() + this.calcTotalSubscriptions();
     }
 
-    public float monthlyBudget()
-    {
-        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (0.1*monthlyIncome));
-        monthlybugdet=total;
-        return monthlybugdet;
 
-    }
-    public float monthlyBudget(float percentage)
+    public float monthlyBudget(float percentage= 10)
     {
         float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (percentage/100*monthlyIncome));
         monthlybugdet=total;
@@ -239,7 +233,7 @@ public class Financials extends User implements Serializable {
         return weeklybudget;
     }
     public float weeklyBudget(){
-        weeklybudget= ((float)monthlybugdet/(float)4.0);
+        weeklybudget= ((float)monthlybugdet/(float)((365/12)/7));
         return weeklybudget;
 
     }
