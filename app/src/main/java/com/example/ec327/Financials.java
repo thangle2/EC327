@@ -40,8 +40,8 @@ public class Financials extends User implements Serializable {
     List<TreeMap<String,Float>> allWeeklySpending = new ArrayList<TreeMap<String,Float>>();
 
     public Financials() {
-        //username = "";
         monthlyIncome = 0;
+        //username = "";
         weeklyGroceries = 0;
         transportation = 0;
         savings = 0;
@@ -118,7 +118,7 @@ public class Financials extends User implements Serializable {
         this.monthlyIncome = monthlyIncome;
     }
     public boolean isEmpty() {
-        if (age == 0 && firstName.equals("") && lastName.equals("")) {
+        if (age == 0 && firstName.equals("") /*&& lastName.equals("")*/) {
             return true;
         } else {
             return false;
