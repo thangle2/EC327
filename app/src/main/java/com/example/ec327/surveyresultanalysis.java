@@ -35,7 +35,7 @@ public class surveyresultanalysis extends AppCompatActivity {
 
 
 
-        String result="Based on your survey\nYour monthly budget to save 10% of your income:\n$" + Float.toString(orginaluser.monthlyBudget())
+        String result="Based on your survey\nYour monthly budget to save 10% of your income:\n$" + Float.toString(orginaluser.monthlyBudget(10))
                 +"\n\nWhich comes out to be\n$"+ orginaluser.weeklyBudget() +" weekly\n\n Do you want to change the amount you want to save?";
         submitresultanalysistext.animatedText(result);
         keepit.setOnClickListener(new View.OnClickListener() {
