@@ -42,7 +42,7 @@ public class Home extends AppCompatActivity {
     String result="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //testing
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         dailyamount = findViewById(R.id.dailyamount);
