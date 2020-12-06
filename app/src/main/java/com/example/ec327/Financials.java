@@ -21,9 +21,6 @@ public class Financials extends User implements Serializable {
     protected float savings;                            //Personal Savings
     protected float weeklyGroceries;                    //Groceries Expenditure (Weekly/not Monthly)
     protected float transportation;                                //Transportation Cost
-    protected float netWorth;
-    protected float debt;
-    protected float totalInvestment;
     protected float monthlybugdet;
     protected float weeklybudget;
     protected Date startday;
@@ -31,7 +28,6 @@ public class Financials extends User implements Serializable {
     protected long howmanydays;
     protected int spendingtoomuch;
     protected float weeklysavings;
-    HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();     //Uncategorized Expenses
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
     HashMap<String, Float> investment = new HashMap<String, Float>();              //Individuals' Investment (not savings) monthly
     HashMap<String, Float> bills = new HashMap<String, Float>();
@@ -44,8 +40,6 @@ public class Financials extends User implements Serializable {
         weeklyGroceries = 0;
         transportation = 0;
         savings = 0;
-        debt = 0;
-        totalInvestment = 0;
         spendingtoomuch=0;
         weeklysavings=0;
     }
@@ -96,7 +90,6 @@ public class Financials extends User implements Serializable {
         weeklysavings=0;
     }
 
-    public float getDebt() { return this.debt; }
 
     public float getMonthlyIncome() {
         return monthlyIncome;
@@ -110,7 +103,6 @@ public class Financials extends User implements Serializable {
         return transportation;
     }
 
-    public float getTotalInvestment() { return totalInvestment; }
 
     public void setMonthlyIncome(float monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
@@ -157,17 +149,11 @@ public class Financials extends User implements Serializable {
         this.savings = savings;
     }
 
-    public float getSavings() {
-        return savings;
-    }
 
     public void setTransportation(float transportation) {
         this.transportation = transportation;
     }
 
-    public void setTotalInvestment(float total) { this.totalInvestment = total; }
-
-    public void setDebt(float debt) { this.debt = debt; }
 
 
     public void setWeeklySpending(String string, float value){
@@ -204,25 +190,14 @@ public class Financials extends User implements Serializable {
         return sum;
     }
 
-    public float calcTotalAdditionalExpenses() {
-        float sum = 0;
-        for (Float value: additionalExpenses.values())
-        {
-            sum = sum + value;
-        }
 
-        return sum;
-    }
 
-    public float totalMonthlyExpenses()
-    {
-        return this.calcTotalAdditionalExpenses() + this.calcTotalBills() + this.calcTotalInvestments() + this.calcTotalSubscriptions();
-    }
+
 
 
     public float monthlyBudget(float percentage)
     {
-        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - ((percentage/100)*monthlyIncome));
+        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - ((percentage/100)*monthlyIncome));
         monthlybugdet=total;
         return monthlybugdet;
 
@@ -243,9 +218,6 @@ public class Financials extends User implements Serializable {
 
         }
         return result;
-    }
-    public void calcNetWorth (){
-        this.netWorth =  (savings + totalInvestment - debt);
     }
 
 }
