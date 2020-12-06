@@ -11,7 +11,7 @@ public class User implements Serializable {
 
     public User() {
         firstName = "";
-      //  lastName = "";
+        //  lastName = "";
         //   username = "";
         age = 0;
         state = "";
@@ -29,7 +29,7 @@ public class User implements Serializable {
         return firstName;
     }
 
-  //  public String getLastName() {        return lastName;    }
+    //  public String getLastName() {        return lastName;    }
 
     //   public String getUsername() {        return username;    }
 

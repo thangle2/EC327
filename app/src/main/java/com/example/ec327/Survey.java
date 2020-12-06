@@ -23,7 +23,7 @@ public class Survey extends AppCompatActivity {
         setContentView(R.layout.activity_survey);
         textsurvey = findViewById(R.id.textsurvey);
         buttonsurvey = findViewById(R.id.buttonsurvey);
-        to_botton=AnimationUtils.loadAnimation(this,R.anim.to_bottomlong);
+        to_botton = AnimationUtils.loadAnimation(this, R.anim.to_bottomlong);
         buttonsurvey.setVisibility(View.INVISIBLE);
         final Handler handler2 = new Handler();
         handler2.postDelayed(new Runnable() {

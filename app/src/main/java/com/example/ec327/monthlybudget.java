@@ -33,7 +33,7 @@ public class monthlybudget extends AppCompatActivity {
         editmonthlybudget.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     editmonthlybudget.setText("$");
                     editmonthlybudget.setSelection(1);
                 }
@@ -44,8 +44,7 @@ public class monthlybudget extends AppCompatActivity {
             public void onClick(View v) {
                 if (editmonthlybudget.getText().toString().trim().equalsIgnoreCase("")) {
                     editmonthlybudget.setError("Input");
-                }
-                else {
+                } else {
                     orginaluser.setMonthlyIncome(Float.parseFloat(editmonthlybudget.getText().toString().substring(1)));
                     Intent a = new Intent(monthlybudget.this, monthlybill.class);
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);

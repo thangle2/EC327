@@ -17,8 +17,8 @@ import android.widget.Spinner;
 import java.util.Map;
 
 public class monthlybill extends AppCompatActivity {
-    Button buttonbill, backbill,buttonsubmit;
-    EditText monthlybillsnames,monthbillsvalue;
+    Button buttonbill, backbill, buttonsubmit;
+    EditText monthlybillsnames, monthbillsvalue;
     TypeWriter textviewbill;
     EditText[] amountedit = new EditText[2];
 
@@ -29,21 +29,21 @@ public class monthlybill extends AppCompatActivity {
         setContentView(R.layout.activity_monthlybill);
 
         //constructor
-        buttonsubmit=findViewById(R.id.buttonsubmit);
+        buttonsubmit = findViewById(R.id.buttonsubmit);
         buttonbill = findViewById(R.id.buttonbill);
         backbill = findViewById(R.id.backbill);
-        monthbillsvalue=findViewById(R.id.monthbillsvalue);
-        monthlybillsnames=findViewById(R.id.monthlybillsnames);
-        amountedit[0]=monthbillsvalue;
-        amountedit[1]=monthlybillsnames;
-        textviewbill=findViewById(R.id.textviewbill);
+        monthbillsvalue = findViewById(R.id.monthbillsvalue);
+        monthlybillsnames = findViewById(R.id.monthlybillsnames);
+        amountedit[0] = monthbillsvalue;
+        amountedit[1] = monthlybillsnames;
+        textviewbill = findViewById(R.id.textviewbill);
 
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         monthbillsvalue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     monthbillsvalue.setText("$");
                     monthbillsvalue.setSelection(1);
                 }
@@ -64,22 +64,21 @@ public class monthlybill extends AppCompatActivity {
                     }
                 } else if (orginaluser.subscription.size() >= 10) {
                     monthlybillsnames.setError("Max: 10!");
-                }
-                 else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 0) {
+                } else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 0) {
                     monthlybillsnames.setError("Already Input! Press again in resubmit!");
                     counter = 1;
                 } else if (already(orginaluser, monthlybillsnames.getText().toString().toLowerCase()) && counter == 1) {
-                    String result = "Bill: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
+                    String result = "Bill: " + monthlybillsnames.getText().toString() + "\nValue: $" + monthbillsvalue.getText().toString().substring(1);
                     textviewbill.setText(result);
-                    orginaluser.setBills(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
+                    orginaluser.setBills(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat(monthbillsvalue.getText().toString().substring(1)));
                     monthlybillsnames.setError(null);
                     monthlybillsnames.setText("");
                     monthbillsvalue.setText("");
                     counter = 0;
                 } else {
-                    String result = "Bill: " + monthlybillsnames.getText().toString() + "\nValue: $" +  monthbillsvalue.getText().toString().substring(1);
+                    String result = "Bill: " + monthlybillsnames.getText().toString() + "\nValue: $" + monthbillsvalue.getText().toString().substring(1);
                     textviewbill.setText(result);
-                    orginaluser.setBills(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat( monthbillsvalue.getText().toString().substring(1)));
+                    orginaluser.setBills(monthlybillsnames.getText().toString().toLowerCase(), Float.parseFloat(monthbillsvalue.getText().toString().substring(1)));
                     monthlybillsnames.setText("");
                     monthbillsvalue.setText("");
 

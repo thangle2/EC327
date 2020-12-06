@@ -34,30 +34,24 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivSplash;
     Animation atg, textone, texttwo;
     int test;
-    int id=115;
+    int id = 115;
     Intent intent;
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
     public static final String SHARED_PREFS = "sharedPrefs";
     private Financials orginaluser;
-    SharedPreferences mPrefs=null;
+    SharedPreferences mPrefs = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String json=loadData();
+        String json = loadData();
         //constructors
 
         buttonsplash = findViewById(R.id.buttonsplash);
         ivSplash = findViewById(R.id.logo);
-
-
-
-
-
-
 
 
         //fonts
@@ -70,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         ivSplash.startAnimation(atg);
 
         buttonsplash.startAnimation(texttwo);
-        if (json==null) {
+        if (json == null) {
             buttonsplash.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -79,10 +73,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(a);
                 }
             });
-        }
-       else if  (json!=null) {
-           Gson gson = new Gson();   //class err
-           Financials orginaluser=gson.fromJson(json,Financials.class);
+        } else if (json != null) {
+            Gson gson = new Gson();   //class err
+            Financials orginaluser = gson.fromJson(json, Financials.class);
             buttonsplash.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,22 +90,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private void Savedata(Financials object){
-        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
-        SharedPreferences.Editor editor= sharedPreferences.edit();
-        Gson gson=new Gson();
-        String json=gson.toJson(object);
-        editor.putString("user",json);
+    private void Savedata(Financials object) {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preference", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(object);
+        editor.putString("user", json);
         editor.apply();
     }
-    public String loadData(){
-        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
-        String result=sharedPreferences.getString("user",null);
+
+    public String loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preference", MODE_PRIVATE);
+        String result = sharedPreferences.getString("user", null);
         return result;
     }
-    public void deleteData(){
-        SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
+
+    public void deleteData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preference", MODE_PRIVATE);
         sharedPreferences.edit().remove("user").apply();
 
     }
