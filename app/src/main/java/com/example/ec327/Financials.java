@@ -213,7 +213,7 @@ public class Financials extends User implements Serializable {
         }
 
         return sum;
-    }
+    }                                                           //
 
     public float calcTotalAdditionalExpenses() {
         float sum = 0;
@@ -222,19 +222,14 @@ public class Financials extends User implements Serializable {
         }
 
         return sum;
-    }
-
-    public float totalMonthlyExpenses() {
-        return this.calcTotalAdditionalExpenses() + this.calcTotalBills() + this.calcTotalInvestments() + this.calcTotalSubscriptions();
-    }                                                           // Returns
-
+    }                                                           // Returns a sum total of Additional Expenses
 
     public float monthlyBudget(float percentage) {
-        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365 / 12) / 7) * this.getTransportation() - ((365 / 12) / 7) * this.weeklyGroceries - ((percentage / 100) * monthlyIncome));
+        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - (((365 / 12) / 7) * this.getTransportation()) - (((365 / 12) / 7) * this.weeklyGroceries) - ((percentage / 100) * monthlyIncome));
         monthlybugdet = total;
         return monthlybugdet;
 
-    }                                                           //
+    }                                                           // Calculates, Returns and Assigns Monthly Budget
 
     public float weeklyBudget() {
         weeklybudget = ((float) monthlybugdet / (float) ((365 / 12) / 7));
