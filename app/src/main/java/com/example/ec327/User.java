@@ -11,14 +11,14 @@ public class User implements Serializable {
 
     public User() {
         firstName = "";
-        lastName = "";
+      //  lastName = "";
         //   username = "";
         age = 0;
         state = "";
     }
 
     public boolean isEmpty() {
-        if (age == 0 && firstName.equals("") && /*lastName.equals("")*/) {
+        if (age == 0 && firstName.equals("")  /*&& lastName.equals("")*/) {
             return true;
         } else {
             return false;
