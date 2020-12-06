@@ -47,7 +47,7 @@ public class investment extends AppCompatActivity {
         editinvestmentvalue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     editinvestmentvalue.setText("$");
                     editinvestmentvalue.setSelection(1);
                 }

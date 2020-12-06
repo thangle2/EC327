@@ -33,7 +33,7 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
         inputarray[0] = editage;
         editfirstname = findViewById(R.id.editfirstname);
         inputarray[1] = editfirstname;
-        informationtext=findViewById(R.id.informationtext);
+        informationtext = findViewById(R.id.informationtext);
 
         //grabbing object
         Intent i = getIntent();
@@ -66,7 +66,7 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View v) {
                 if (checkinput(inputarray)) {
-                    String result="Hello "+editfirstname.getText().toString()+"!";
+                    String result = "Hello " + editfirstname.getText().toString() + "!";
                     informationtext.setText("");
                     informationtext.setCharacterDelay(50);
                     informationtext.animatedText(result);

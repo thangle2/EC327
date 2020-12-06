@@ -49,7 +49,7 @@ public class monthlysubs extends AppCompatActivity {
         editsubvalue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     editsubvalue.setText("$");
                     editsubvalue.setSelection(1);
                 }

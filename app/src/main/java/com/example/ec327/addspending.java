@@ -33,7 +33,7 @@ public class addspending extends AppCompatActivity {                //
         amountinput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     amountinput.setText("$");
                     amountinput.setSelection(1);
                 }
@@ -50,7 +50,7 @@ public class addspending extends AppCompatActivity {                //
                 else if (amountinput.getText().toString().trim().equalsIgnoreCase("")) {
                     amountinput.setError("Remember to enter a number!");
                 } else {
-                    orginaluser.setWeeklySpending(typeinput.getText().toString(),Float.parseFloat(amountinput.getText().toString().substring(1)));
+                    orginaluser.setWeeklySpending(typeinput.getText().toString(), Float.parseFloat(amountinput.getText().toString().substring(1)));
                     calculatepercentage(orginaluser);         //Calculate % spending relative to daily limit
 
                 }
@@ -66,15 +66,17 @@ public class addspending extends AppCompatActivity {                //
             }
         });
     }
+
     private void calculatepercentage(Financials financials) {
         //get entered texts from the amountinput
         double num1 = Double.parseDouble(amountinput.getText().toString().substring(1));
         //do the calculation
-        double num2 = (double)financials.getWeeklybudget(); //num2: number from daily limit
-        double calculated = (num1 / num2)*(double)100.0;
+        double num2 = (double) financials.weeklyBudget(); //num2: number from daily limit
+        double calculated = (num1 / num2) * (double) 100.0;
         //display value on screen.
-        displayvalue.setText(String.valueOf("You spend " + round(calculated,2) + "% of your weekly amount"));
+        displayvalue.setText(String.valueOf("You spend " + round(calculated, 2) + "% of your weekly amount"));
     }
+
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 

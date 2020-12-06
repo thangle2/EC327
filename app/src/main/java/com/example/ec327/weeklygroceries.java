@@ -35,7 +35,7 @@ public class weeklygroceries extends AppCompatActivity {
         editgro.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
+                if (hasFocus) {
                     editgro.setText("$");
                     editgro.setSelection(1);
                 }

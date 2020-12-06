@@ -14,16 +14,17 @@ import java.util.TreeMap;
 public class monthlyspending extends AppCompatActivity {
     TypeWriter showallspending;
     Button gobackhome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthlyspending);
-        showallspending=findViewById(R.id.showallspending);
-        gobackhome=findViewById(R.id.gobackhome);
+        showallspending = findViewById(R.id.showallspending);
+        gobackhome = findViewById(R.id.gobackhome);
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
-        StringBuilder result= new StringBuilder();
-        if(orginaluser.allWeeklySpending.size()!=0) {
+        StringBuilder result = new StringBuilder();
+        if (orginaluser.allWeeklySpending.size() != 0) {
             result.append("\n");
             for (int z = 0; z < orginaluser.allWeeklySpending.size(); z++) {
                 result.append("Week").append(Integer.toString(z + 1)).append(":\n");
@@ -37,8 +38,7 @@ public class monthlyspending extends AppCompatActivity {
             showallspending.setCharacterDelay(25);
             showallspending.setText("");
             showallspending.animatedText(result);
-        }
-        else{
+        } else {
             showallspending.setCharacterDelay(25);
             showallspending.setText("");
             showallspending.animatedText("\n\n\nNothing to show so far!\nCome back when you after a week!");
