@@ -118,7 +118,7 @@ public class Financials extends User implements Serializable {
         this.monthlyIncome = monthlyIncome;
     }
     public boolean isEmpty() {
-        if (age == 0 && firstName.equals("") && lastName.equals("")) {
+        if (age == 0 && firstName.equals("")) {
             return true;
         } else {
             return false;
@@ -228,13 +228,6 @@ public class Financials extends User implements Serializable {
         return this.calcTotalAdditionalExpenses() + this.calcTotalBills() + this.calcTotalInvestments() + this.calcTotalSubscriptions();
     }
 
-    public float monthlyBudget()
-    {
-        float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (0.1*monthlyIncome));
-        monthlybugdet=total;
-        return monthlybugdet;
-
-    }
     public float monthlyBudget(float percentage)
     {
         float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - this.calcTotalAdditionalExpenses() - ((365/12)/7)*this.getTransportation() - ((365/12)/7)*this.weeklyGroceries - (percentage/100*monthlyIncome));
@@ -245,10 +238,10 @@ public class Financials extends User implements Serializable {
     public float getWeeklybudget(){
         return weeklybudget;
     }
-    public float weeklyBudget(){
-        weeklybudget= ((float)monthlybugdet/(float)4.0);
-        return weeklybudget;
 
+    public float weeklyBudget(){
+        weeklybudget= ((float)monthlybugdet/(float)((365/12)/7));
+        return weeklybudget;
     }
     public float getWeeklySpending(){
         float result=0;

@@ -42,8 +42,6 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         dailyamount = findViewById(R.id.dailyamount);
@@ -59,7 +57,7 @@ public class Home extends AppCompatActivity {
         orginaluser.isittime();
         String mainresult="Day: "+Long.toString(orginaluser.howmanydays)+"\nWeekly Budget: $"+Float.toString(orginaluser.weeklyBudget())+"\nAlready Spent: $"+Float.toString(orginaluser.getWeeklySpending())+"\nAmount left: $"+Float.toString(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending());
         if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<0){
-            mainresult=mainresult+"\n\nThe overspending will bleed to next week!";
+            mainresult=mainresult+"\n\nThe overspending will bleed into next week!";
         }
         else if(orginaluser.weeklyBudget()-orginaluser.getWeeklySpending()<(orginaluser.weeklyBudget()*0.1)){
             mainresult=mainresult+"\n\nStop Spending! You only have 10% of budget left!";
@@ -75,7 +73,7 @@ public class Home extends AppCompatActivity {
         Savedata(orginaluser);
          hello.setText("");
          hello.setCharacterDelay(35);
-         hello.animatedText("Hello "+orginaluser.getFirstName());
+         hello.animatedText("Hello "+orginaluser.getFirstName() + "! ");
         final Handler handler2=new Handler();
         String finalMainresult = mainresult;
         handler2.postDelayed(new Runnable(){
@@ -115,7 +113,6 @@ public class Home extends AppCompatActivity {
                             String name = (String) entry.getKey();
                             Float value = (Float) entry.getValue();
                             result = result + "-" + name + " : $" + Float.toString(value) + "\n";
-
 
 
                         }
