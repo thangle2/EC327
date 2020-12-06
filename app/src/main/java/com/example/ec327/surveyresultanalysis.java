@@ -16,6 +16,7 @@ public class surveyresultanalysis extends AppCompatActivity {
     TypeWriter submitresultanalysistext;
     Button keepit,changeit,submitpercentage;
     EditText percentage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,7 @@ public class surveyresultanalysis extends AppCompatActivity {
             public void onClick(View v) {
                 Intent a = new Intent(surveyresultanalysis.this, Home.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                orginaluser.setFirstday();
                 a.putExtra("userObject", orginaluser);
                 startActivity(a);
             }

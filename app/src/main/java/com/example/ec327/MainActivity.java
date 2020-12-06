@@ -2,13 +2,17 @@ package com.example.ec327;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.content.SharedPreferences;
 import android.widget.TextView;
@@ -17,17 +21,28 @@ import android.widget.Toolbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     Button buttonsplash;
     ImageView ivSplash;
     Animation atg, textone, texttwo;
     int test;
-
+    int id=115;
+    Intent intent;
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
     public static final String SHARED_PREFS = "sharedPrefs";
     private Financials orginaluser;
     SharedPreferences mPrefs=null;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
         buttonsplash = findViewById(R.id.buttonsplash);
         ivSplash = findViewById(R.id.logo);
+
+
+
+
+
+
+
 
         //fonts
         Typeface AR = Typeface.createFromAsset(getAssets(), "fonts/anmatic_regular.ttf");
@@ -64,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             buttonsplash.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent a = new Intent(MainActivity.this, Home.class);
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     a.putExtra("userObject", orginaluser);
@@ -72,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+
+
     private void Savedata(Financials object){
         SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -85,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
         String result=sharedPreferences.getString("user",null);
         return result;
     }
-    public void deleteData(String key){
+    public void deleteData(){
         SharedPreferences sharedPreferences=getSharedPreferences("shared preference",MODE_PRIVATE);
-        sharedPreferences.edit().remove(key).apply();
+        sharedPreferences.edit().remove("user").apply();
 
     }
 

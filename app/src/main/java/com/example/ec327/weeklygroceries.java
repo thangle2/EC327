@@ -32,7 +32,15 @@ public class weeklygroceries extends AppCompatActivity {
         backgro = findViewById(R.id.backgro);
         editgro = findViewById(R.id.editgro);
 
-
+        editgro.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    editgro.setText("$");
+                    editgro.setSelection(1);
+                }
+            }
+        });
         Intent i = getIntent();
         Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
         if (orginaluser.getWeeklyGroceries() > 0) {
@@ -41,14 +49,14 @@ public class weeklygroceries extends AppCompatActivity {
         buttongro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editgro.getText().toString().trim().equalsIgnoreCase("")) {
+                if (editgro.getText().toString().substring(1).trim().equalsIgnoreCase("")) {
                     editgro.setError("Input");
 
-                } else if (Float.parseFloat(editgro.getText().toString()) < 0) {
+                } else if (Float.parseFloat(editgro.getText().toString().substring(1)) < 0) {
                     editgro.setError("No negative!");
                 } else {
                     Intent a = new Intent(weeklygroceries.this, weektransport.class);
-                    orginaluser.setWeeklyGroceries(Float.parseFloat(editgro.getText().toString()));
+                    orginaluser.setWeeklyGroceries(Float.parseFloat(editgro.getText().toString().substring(1)));
                     a.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     a.putExtra("userObject", orginaluser);
                     startActivity(a);

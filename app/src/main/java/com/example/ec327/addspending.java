@@ -70,10 +70,10 @@ public class addspending extends AppCompatActivity {                //
         //get entered texts from the amountinput
         double num1 = Double.parseDouble(amountinput.getText().toString().substring(1));
         //do the calculation
-        double num2 = financials.weeklyBudget(); //num2: number from daily limit
-        double calculated = (num1 / num2);
+        double num2 = (double)financials.getWeeklybudget(); //num2: number from daily limit
+        double calculated = (num1 / num2)*(double)100.0;
         //display value on screen.
-        displayvalue.setText(String.valueOf("You spend " + round(calculated,2) + "% of your daily amount"));
+        displayvalue.setText(String.valueOf("You spend " + round(calculated,2) + "% of your weekly amount"));
     }
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();

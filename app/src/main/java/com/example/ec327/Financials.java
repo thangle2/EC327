@@ -7,7 +7,10 @@ import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -24,13 +27,17 @@ public class Financials extends User implements Serializable {
     protected float monthlybugdet;
     protected float weeklybudget;
     public String[] last15;
-    protected int counter;
+    protected Date startday;
+    protected Date currentday;
+    protected long howmanydays;
+    protected int spendingtoomuch;
+    protected float weeklysavings;
     HashMap<String, Float> additionalExpenses = new HashMap<String, Float>();     //Uncategorized Expenses
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
     HashMap<String, Float> investment = new HashMap<String, Float>();              //Individuals' Investment (not savings) monthly
     HashMap<String, Float> bills = new HashMap<String, Float>();
-    Map<String, Float> weeklySpending = new TreeMap<String, Float>() ;
-    ArrayList<weeklySpending> allWeeklySpending = new ArrayList<>();
+    TreeMap<String, Float> weeklySpending = new TreeMap<String, Float>() ;
+    List<TreeMap<String,Float>> allWeeklySpending = new ArrayList<TreeMap<String,Float>>();
 
     public Financials() {
         //username = "";
@@ -40,8 +47,55 @@ public class Financials extends User implements Serializable {
         savings = 0;
         debt = 0;
         totalInvestment = 0;
+        spendingtoomuch=0;
         last15=new String[15];
-        counter=0;
+        weeklysavings=0;
+    }
+    public float howmuchweeklyspend(){
+        float result=0;
+        for (TreeMap.Entry<String, Float> entry: weeklySpending.entrySet()) {
+            Float value = (Float) entry.getValue();
+            result+=value;
+        }
+        return result;
+    }
+
+    public void setFirstday(){
+        startday= Calendar.getInstance().getTime();
+    }
+    public void setCurrentday(){
+        currentday= Calendar.getInstance().getTime();
+    }
+    public void differencesinday(){
+        long diff = currentday.getTime()-startday.getTime();
+        long seconds = diff / 1000;
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        long days = hours / 24;
+        howmanydays=days;
+    }
+    public void isittime(){
+        differencesinday();
+        if(howmanydays==(allWeeklySpending.size())*7){
+            submitWeeklySpending(weeklySpending);
+            updateweeklybudget();
+        }
+    }
+    public void submitWeeklySpending(TreeMap<String,Float> weeklyspending){
+        allWeeklySpending.add(weeklyspending);
+    }
+    public void updateweeklybudget(){
+        resetsavings();
+        if(howmuchweeklyspend()-weeklybudget>0){
+            weeklybudget=weeklybudget-(howmuchweeklyspend()-weeklybudget);
+        }
+        else if (howmuchweeklyspend()-weeklybudget>0){
+            weeklysavings=howmuchweeklyspend()-weeklybudget;
+
+        }
+    }
+    public void resetsavings(){
+        weeklysavings=0;
     }
 
     public float getDebt() { return this.debt; }
@@ -187,6 +241,9 @@ public class Financials extends User implements Serializable {
         monthlybugdet=total;
         return monthlybugdet;
 
+    }
+    public float getWeeklybudget(){
+        return weeklybudget;
     }
     public float weeklyBudget(){
         weeklybudget= ((float)monthlybugdet/(float)4.0);
