@@ -35,10 +35,10 @@ public class surveryresultinformation extends AppCompatActivity {
     oinkoink = findViewById(R.id.oinkoink);
     Intent i = getIntent();
     Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
-    String savedup = howmuch(orginaluser.getAge());
+    String savedup = howmuch(orginaluser.getAge(), (orginaluser.getMonthlyIncome() * 12));
     String result = "Hello " + orginaluser.getFirstName() + "!\n" +
         "According to your age (" + orginaluser.getAge() + ")\n"
-        + "You should already have saved up:\n" + savedup +
+        + "You should already have saved up:\n $" + savedup +
         "\n\nHow much do you have saved?\nPress the pig nose to submit";
     textsurveryresultinformation.setText("");
     textsurveryresultinformation.setCharacterDelay(25);
@@ -100,12 +100,28 @@ public class surveryresultinformation extends AppCompatActivity {
     });
   }
 
-  public String howmuch(int age) {
+  public String howmuch(int age, float ainc /*annual income*/) {
     String result = "";
     if (age <= 25) {
-      result = "Nothing! If you're not in debt\n you are doing well!";
+      result = "Nothing! If you're not in debt\n You are doing well!";
     } else if (age > 25 && age <= 30) {
-      result = "$6000 to $12000 ";
+      result = String.valueOf((ainc) * (age - 25 + 2));
+    } else if (age > 30 && age <= 45) {
+      result = String.valueOf((ainc* (age-30+5)));
+    } else if (age > 45 && age <= 65) {
+      result = String.valueOf((ainc * (age - 45 + 10)));
+    } else if (age > 65) {
+      result = String
+          .valueOf((ainc * 100 / 3));                           // 3-4% rule of investment-savings
+    }
+    return result;
+  }
+  /*  public String howmuch(int age) {
+    String result = "";
+    if (age <= 25) {
+      result = "Nothing! If you're not in debt\n You are doing well!";
+    } else if (age > 25 && age <= 30) {
+      result = "$6000 to $12000   ";
     } else if (age > 30 && age <= 40) {
       result = "$14000 to $28000 ";
     } else if (age > 40 && age <= 60) {
@@ -114,5 +130,5 @@ public class surveryresultinformation extends AppCompatActivity {
       result = "Enough to retire!";
     }
     return result;
-  }
+  }*/
 }
