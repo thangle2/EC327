@@ -3,7 +3,7 @@
 ## App name: Piggy $aver :pig:
 
 ## :page_facing_up: General Info 
-The goal of this application is to create a money management tool for people who want to take control of their spending. It provides an overall summary of how much you can spend on a weekly basis, what you are spending, and how much your are saving. (Currency Option Available: USD Only)
+The goal of this application is to create a money management tool for people who want to stay on track with their finances. It provides an overall summary of how much you can spend on a weekly basis, what you are spending, and how much your are saving. (Currency Option Available: USD Only)
 ## :mag_right: How to use
 - New users will take a 5-minunte survey about their monthly/weekly fixed expenses in the beginning 
 
