@@ -39,7 +39,7 @@ public class surveryresultinformation extends AppCompatActivity {
     String result = "Hello " + orginaluser.getFirstName() + "!\n" +
         "According to your age (" + orginaluser.getAge() + ")\n"
         + "You should already have saved up:\n $" + savedup +
-        "\n\nHow much do you have saved?\nPress the pig nose to submit";
+        "\n\nHow much do you have saved?\nPress the pig nose to submit";                            // Text Output Associated with object original user
     textsurveryresultinformation.setText("");
     textsurveryresultinformation.setCharacterDelay(25);
     textsurveryresultinformation.animatedText(result);
@@ -105,13 +105,14 @@ public class surveryresultinformation extends AppCompatActivity {
     if (age <= 25) {
       result = "Nothing! If you're not in debt\n You are doing well!";
     } else if (age > 25 && age <= 30) {
-      result = String.valueOf((ainc) * (age - 25 + 2));
+      result = String.valueOf((ainc) * (age - 25 + 2));        // 1-7 times Annual Income
     } else if (age > 30 && age <= 45) {
-      result = String.valueOf((ainc* (age-30+5)));
+      result = String.valueOf((ainc * (age - 31 + 5)));        // 5-19 times Annual Income
     } else if (age > 45 && age <= 65) {
-      result = String.valueOf((ainc * (age - 45 + 10)));
+      result = String.valueOf((ainc * (age - 46 + 10)));        // 10-29 times Annual Income
     } else if (age > 65) {
-      result = String.valueOf((ainc * 100 / 3));                           // 3-4% rule of investment-savings
+      result = String
+          .valueOf((ainc * 100 / 3));                           // 3-4% rule of investment-savings
     }
     return result;
   }
