@@ -6,7 +6,9 @@
 The goal of this application is to create a money management tool for people who want to stay on track with their finances. It provides an overall summary of how much you can spend on a weekly basis, what you are spending, and how much your are saving. (Currency Option Available: USD Only)
 ## :mag_right: How to use
 - New users will take a 5-minunte survey about their monthly/weekly fixed expenses in the beginning 
-
+	- For all question pages that contain a "Submit" button:
+		- Tap "Submit", your answers will be recorded
+		- Tap "Next" if you want to proceed to the next question
 - After the survey, the users will see a **Home screen** displays:
 	- Number of days that they have been using the app
 	- Amount of their weekly budget
@@ -15,17 +17,18 @@ The goal of this application is to create a money management tool for people who
 	- Amount of their weekly saving
 	- An overview of their spendings (the most recent 15 items)		
 	
-- The Pen button on the bottom of the **Home screen** contains the options of:
-	- User Profile page
-		- An overview of user information from the survey
-		- Users can also add/change information about bills, subscriptions, and investment
-	- Add a Spending
-		- Enter Spending Type
-		- Enter the amount
-		- Tap submit
-	- Monthly Spending Summary
-		- An overview of the user's added spendings after the survey
-	- For all three screens above, tap the arrow button on the left top corner to return to **Home Screen**
+- Tap Pen button on the bottom of the **Home screen** 
+	- Options displayed contains (left to right):
+		- User Profile page
+			- An overview of user information gathered from the survey
+			- "Change" button is aviable for th users to add/change information about bills, subscriptions, and investment 
+		- Add a Spending
+			- Enter Spending Type
+			- Enter the amount
+			- Tap submit
+		- Monthly Spending Summary
+			- An overview of the user's added spendings after the survey
+		- For all three screens above, tap the arrow button on the left top corner to return to **Home Screen**
 
 - Video Tutorial: https://www.youtube.com/watch?v=2WFUcCnRDaU&feature=youtu.be&fbclid=IwAR3LEbfScLAbPh8F2ENrA8AaZYEmmBphBBzt57IkbA5yE4N6jnwrnJHlHTQ
 ## :round_pushpin: Install
