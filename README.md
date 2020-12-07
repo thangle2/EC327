@@ -15,12 +15,14 @@ The goal of this application is to create a money management tool for people who
 		
 - The Pen button on the bottom of the **Home screen** contains the options of:
 	- User Profile page
+		- An overview of user information from the survey
 	- Add a Spending
 		- Enter Spending Type
 		- Enter the amount
 		- Tap submit
 		- Tap the arrow button on the left top corner to return to **Home Screen**
 	- Monthly Spending Summary
+		- An overview of the user's added spendings after taking the survey
 ## :round_pushpin: Install
 - Import the code into Android Studio
 - Choose an emulator (Pixel 3a)
