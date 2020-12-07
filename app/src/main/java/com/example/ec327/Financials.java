@@ -26,7 +26,8 @@ public class Financials extends User implements Serializable {
     protected Date startday;                     //
     protected Date currentday;                     //
     protected long howmanydays;                     //
-    protected int spendingtoomuch;                     //
+    protected int spendingtoomuch;
+    protected float percentage;//
     protected float weeklysavings;                     //
     HashMap<String, Float> subscription = new HashMap<String, Float>();            //Repeating Subscription costs
     HashMap<String, Float> investment = new HashMap<String, Float>();              //Individuals' Investment (not savings) monthly
@@ -40,8 +41,12 @@ public class Financials extends User implements Serializable {
         weeklyGroceries = 0;
         transportation = 0;
         savings = 0;
+        percentage=10;
         spendingtoomuch = 0;
         weeklysavings = 0;
+    }
+    public float getPercentage(){
+        return percentage;
     }
 
     public float howmuchweeklyspend() {
@@ -195,6 +200,7 @@ public class Financials extends User implements Serializable {
 
 
     public float monthlyBudget(float percentage) {
+        this.percentage=percentage;
         float total = (float) (this.monthlyIncome - this.calcTotalSubscriptions() - this.calcTotalInvestments() - this.calcTotalBills() - ((365 / 12) / 7) * this.getTransportation() - ((365 / 12) / 7) * this.weeklyGroceries - ((percentage / 100) * monthlyIncome));
         monthlybugdet = total;
         return monthlybugdet;

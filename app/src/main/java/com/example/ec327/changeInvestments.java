@@ -60,28 +60,44 @@ public class changeInvestments extends AppCompatActivity {
         else if (amountinput.getText().toString().substring(1).trim().equalsIgnoreCase("")) {
           amountinput.setError("Remember to enter a number!");
         } else {
+          orginaluser.setInvestment(typeinput.getText().toString().toLowerCase(),
+                  Float.parseFloat(amountinput.getText().toString().substring(1)));
+          orginaluser.monthlyBudget(orginaluser.getPercentage());
+          orginaluser.weeklyBudget();
           calculateTotalinvestment(
               orginaluser);                 //Calculate % spending relative to income
-          orginaluser.setInvestment(typeinput.getText().toString().toLowerCase(),
-              Float.parseFloat(amountinput.getText().toString().substring(1)));
+          amountinput.setText("");
+          typeinput.setText("");
         }
 
       }
 
-      private void calculateTotalinvestment(Financials financials) {
-        Double addedBill = Double.parseDouble(amountinput.getText().toString().substring(1));
-        Double totalBills = (Double) 0.0; // use financials function
-
-        for (TreeMap.Entry<String, Float> entry : financials.investment.entrySet()) {
-          Float value = (Float) entry.getValue();
-          totalBills += Double.valueOf(value);
-
-        }
-        Double total = totalBills + addedBill;
-
-        displayvalue.setText(String.valueOf("Your new total amount of monthly Bill is $" + total));
-      }
 
     });
   }
+  private void calculateTotalinvestment(Financials financials) {
+    Double addedBill = Double.parseDouble(amountinput.getText().toString().substring(1));
+    Double totalBills = (Double) 0.0; // use financials function
+
+    for (TreeMap.Entry<String, Float> entry : financials.investment.entrySet()) {
+      Float value = (Float) entry.getValue();
+      totalBills += Double.valueOf(value);
+
+    }
+    Double total = totalBills + addedBill;
+
+    displayvalue.setText(String.valueOf("Your new total amount of monthly Investment is $" + round(total,2)));
+  }
+  public static double round(double value, int places) {
+    if (places < 0) {
+      throw new IllegalArgumentException();
+    }
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
+  }
+
+
 }

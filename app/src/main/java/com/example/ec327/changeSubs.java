@@ -60,9 +60,13 @@ public class changeSubs extends AppCompatActivity {
         else if (amountinput.getText().toString().substring(1).trim().equalsIgnoreCase("")) {
           amountinput.setError("Remember to enter a number!");
         } else {
-          calculateTotalSubs(orginaluser);                 //Calculate % spending relative to income
           orginaluser.setSubscription(typeinput.getText().toString().toLowerCase(),
-              Float.parseFloat(amountinput.getText().toString().substring(1)));
+                  Float.parseFloat(amountinput.getText().toString().substring(1)));
+          orginaluser.monthlyBudget(orginaluser.getPercentage());
+          orginaluser.weeklyBudget();
+          calculateTotalSubs(orginaluser);                 //Calculate % spending relative to income
+          amountinput.setText("");
+          typeinput.setText("");
         }
 
       }
@@ -82,6 +86,16 @@ public class changeSubs extends AppCompatActivity {
     }
     Double total = totalBills + addedBill;
 
-    displayvalue.setText(String.valueOf("Your new total amount of monthly Bill is $" + total));
+    displayvalue.setText(String.valueOf("Your new total amount of monthly Subscription is $" + round(total,2)));
+  }
+  public static double round(double value, int places) {
+    if (places < 0) {
+      throw new IllegalArgumentException();
+    }
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
   }
 }

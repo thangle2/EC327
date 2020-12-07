@@ -41,7 +41,7 @@ public class surveryresultinformation extends AppCompatActivity {
         + "You should already have saved up:\n" + savedup +
         "\n\nHow much do you have saved?\nPress the pig nose to submit";
     textsurveryresultinformation.setText("");
-    textsurveryresultinformation.setCharacterDelay(50);
+    textsurveryresultinformation.setCharacterDelay(25);
     textsurveryresultinformation.animatedText(result);
     donotknowinformationsurveyresult.startAnimation(longrew);
     editsavings.startAnimation(longshot);
@@ -76,7 +76,7 @@ public class surveryresultinformation extends AppCompatActivity {
         } else {
           final TypeWriter oinkoinktext = (TypeWriter) findViewById(R.id.oinkoinktext);
           oinkoinktext.setText("");
-          oinkoinktext.setCharacterDelay(50);
+          oinkoinktext.setCharacterDelay(25);
           oinkoinktext.animatedText("Oink! Oink!");
 
           final Handler handler = new Handler();
@@ -94,7 +94,7 @@ public class surveryresultinformation extends AppCompatActivity {
               startActivity(a);
 
             }
-          }, 1000);
+          }, 800);
         }
       }
     });

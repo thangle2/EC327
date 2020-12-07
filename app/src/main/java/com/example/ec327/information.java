@@ -65,7 +65,18 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
     buttonsurvey.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (checkinput(inputarray)) {
+        if (!checkinput(inputarray)) {
+
+          for (EditText editText : inputarray) {
+            if (editText.length() == 0) {
+              editText.setError("Input");
+            }
+          }
+
+        } else if (Integer.parseInt(editage.getText().toString()) > 90
+            || Integer.parseInt(editage.getText().toString()) < 0) {
+          editage.setError("?");
+        } else {
           String result = "Hello " + editfirstname.getText().toString() + "!";
           informationtext.setText("");
           informationtext.setCharacterDelay(50);
@@ -85,17 +96,8 @@ public class information extends AppCompatActivity implements AdapterView.OnItem
               startActivity(a);
             }
           }, 2000);
-
-        } else if (Integer.parseInt(editage.getText().toString()) > 90
-            || Integer.parseInt(editage.getText().toString()) < 0) {
-          editage.setError("?");
-        } else {
-          for (EditText editText : inputarray) {
-            if (editText.length() == 0) {
-              editText.setError("Input");
-            }
           }
-        }
+
       }
     });
 

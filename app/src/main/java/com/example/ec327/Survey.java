@@ -33,9 +33,9 @@ public class Survey extends AppCompatActivity {
         buttonsurvey.setVisibility(View.VISIBLE);
 
       }
-    }, 5500);
+    }, 5000);
     textsurvey.setText("");
-    textsurvey.setCharacterDelay(35);
+    textsurvey.setCharacterDelay(30);
     textsurvey.animatedText(
         "This looks like your first time using Piggy Saver!\n In order to fully utilize this app, we need you to take\n a simple survey before starting.");
     Typeface PB = Typeface.createFromAsset(getAssets(), "fonts/poppins_bold.otf");

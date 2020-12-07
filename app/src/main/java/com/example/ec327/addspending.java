@@ -51,7 +51,9 @@ public class addspending extends AppCompatActivity {
         } else {
           orginaluser.setWeeklySpending(typeinput.getText().toString(),
               Float.parseFloat(amountinput.getText().toString().substring(1)));
-          calculatepercentage(orginaluser);         //Calculate % spending relative to daily limit
+          calculatepercentage(orginaluser);
+          amountinput.setText("");
+          typeinput.setText("");//Calculate % spending relative to daily limit
         }
       }
     });

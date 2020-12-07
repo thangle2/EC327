@@ -12,6 +12,8 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.math.BigDecimal;
+
 public class surveyresultanalysis extends AppCompatActivity {
 
   TypeWriter submitresultanalysistext;
@@ -30,14 +32,14 @@ public class surveyresultanalysis extends AppCompatActivity {
     submitpercentage = findViewById(R.id.submitpercentage);
     submitresultanalysistext.setText("");
     submitpercentage.setVisibility(View.INVISIBLE);
-    submitresultanalysistext.setCharacterDelay(50);
+    submitresultanalysistext.setCharacterDelay(25);
     Intent i = getIntent();
     Financials orginaluser = (Financials) i.getSerializableExtra("userObject");
 
     String result =
         "Based on your survey\nYour monthly budget to save 10% of your income:\n$" + Float
-            .toString(orginaluser.monthlyBudget(10))
-            + "\n\nWhich comes out to be\n$" + orginaluser.weeklyBudget()
+            .toString(round(orginaluser.monthlyBudget(10),2))
+            + "\n\nWhich comes out to be\n$" + round(orginaluser.weeklyBudget(),2)
             + " weekly\n\n Do you want to change the amount you want to save?";
     submitresultanalysistext.animatedText(result);
     keepit.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +71,8 @@ public class surveyresultanalysis extends AppCompatActivity {
           String result =
               "Based on your survey\nYour monthly budget to save " + percentage.getText().toString()
                   + "% of your income:\n$" + Float.toString(
-                  orginaluser.monthlyBudget(Float.parseFloat(percentage.getText().toString())))
-                  + "\n\nWhich comes out to be\n$" + orginaluser.weeklyBudget()
+                  round(orginaluser.monthlyBudget(Float.parseFloat(percentage.getText().toString())),2))
+                  + "\n\nWhich comes out to be\n$" + round(orginaluser.weeklyBudget(),2)
                   + " weekly\n\n Do you want to change the amount you want to save?";
           submitresultanalysistext.animatedText(result);
           percentage.setVisibility(View.INVISIBLE);
@@ -82,5 +84,9 @@ public class surveyresultanalysis extends AppCompatActivity {
 
 
   }
-
+  public static float round(float d, int decimalPlace) {
+    BigDecimal bd = new BigDecimal(Float.toString(d));
+    bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+    return bd.floatValue();
+  }
 }

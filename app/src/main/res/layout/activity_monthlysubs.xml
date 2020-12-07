@@ -41,7 +41,7 @@
         android:layout_width="354dp"
         android:layout_height="52dp"
         android:layout_marginBottom="2dp"
-        android:text="Input your subscriptions(ex: Netfilx, Spotify, Hulu, etc)"
+        android:text="Input your subscriptions(ex: Netflix, Spotify, Hulu, etc)"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"

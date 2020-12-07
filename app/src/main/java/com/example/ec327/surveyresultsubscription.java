@@ -38,15 +38,15 @@ public class surveyresultsubscription extends AppCompatActivity {
 
     int amount = orginaluser.subscription.size() * 75;
     textaddingsubscription.setText("");
-    textaddingsubscription.setCharacterDelay(50);
+    textaddingsubscription.setCharacterDelay(25);
     textaddingsubscription.animatedText(result1);
     textaddingsubscription.setHeight(amount);
-    float amountoftime = ((float) result1.length() * 50) + 1000;
-    double percentage = roundAvoid(total / orginaluser.getMonthlyIncome() * 100, 2);
+    float amountoftime = ((float) result1.length() * 25) + 1000;
+    double percentage = round(total / orginaluser.getMonthlyIncome() * 100, 2);
     String totalamount = "You spend: $" + Float.toString(total) + " per month!\n This is " + Double
         .toString(percentage) + "%\n of your income!\n";
 
-    long amountmoretime = (long) (amountoftime + 5000);
+    long amountmoretime = (long) (amountoftime + 4500);
     final Handler handler = new Handler();
     if (percentage <= 10) {
       totalamount = totalamount + "This is very good!";
@@ -60,7 +60,7 @@ public class surveyresultsubscription extends AppCompatActivity {
       @Override
       public void run() {
         texttotalsubscription.setText("");
-        texttotalsubscription.setCharacterDelay(50);
+        texttotalsubscription.setCharacterDelay(25);
         texttotalsubscription.animatedText(finalTotalamount);
       }
     }, (long) amountoftime);
@@ -79,8 +79,14 @@ public class surveyresultsubscription extends AppCompatActivity {
   }
 
 
-  public static double roundAvoid(double value, int places) {
-    double scale = Math.pow(10, places);
-    return Math.round(value * scale) / scale;
+  public static double round(double value, int places) {
+    if (places < 0) {
+      throw new IllegalArgumentException();
+    }
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
   }
 }
