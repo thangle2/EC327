@@ -21,7 +21,7 @@ The goal of this application is to create a money management tool for people who
 	- Options displayed contains (left to right):
 		- User Profile page
 			- An overview of user information gathered from the survey
-			- "Change" button is aviable for th users to add/change information about bills, subscriptions, and investment 
+			- "Change" button is available for th users to add/change information about bills, subscriptions, and investment 
 		- Add a Spending
 			- Enter Spending Type
 			- Enter the amount
