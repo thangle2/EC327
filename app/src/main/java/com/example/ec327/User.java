@@ -29,13 +29,13 @@ public class User implements Serializable {
 
   public void setFirstName(String firstName) {
     this.firstName = firstName;
-  }                   //Returns User's name
+  }                     // Assigns User's name
 
   public void setAge(int age) {
     this.age = age;
-  }
+  }                      // Assigns User's age
 
   public void setState(String state) {
     this.state = state;
-  }
+  }                            // Assigns User's State of Residency
 }
