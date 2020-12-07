@@ -23,9 +23,11 @@ The goal of this application is to create a money management tool for people who
 		- Enter Spending Type
 		- Enter the amount
 		- Tap submit
-		- Tap the arrow button on the left top corner to return to **Home Screen**
 	- Monthly Spending Summary
 		- An overview of the user's added spendings after the survey
+	- For all three screens above, tap the arrow button on the left top corner to return to **Home Screen**
+
+- Video Tutorial: https://www.youtube.com/watch?v=2WFUcCnRDaU&feature=youtu.be&fbclid=IwAR3LEbfScLAbPh8F2ENrA8AaZYEmmBphBBzt57IkbA5yE4N6jnwrnJHlHTQ
 ## :round_pushpin: Install
 - Import the code into Android Studio
 - Choose an emulator (Pixel 3a)
