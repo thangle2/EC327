@@ -16,7 +16,7 @@ import android.widget.Spinner;
 
 import java.util.Map;
 
-public class monthlybill extends AppCompatActivity {
+  public class monthlybill extends AppCompatActivity {
 
   Button buttonbill, backbill, buttonsubmit;
   EditText monthlybillsnames, monthbillsvalue;
