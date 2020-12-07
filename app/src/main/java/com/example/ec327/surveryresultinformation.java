@@ -111,8 +111,7 @@ public class surveryresultinformation extends AppCompatActivity {
     } else if (age > 45 && age <= 65) {
       result = String.valueOf((ainc * (age - 45 + 10)));
     } else if (age > 65) {
-      result = String
-          .valueOf((ainc * 100 / 3));                           // 3-4% rule of investment-savings
+      result = String.valueOf((ainc * 100 / 3));                           // 3-4% rule of investment-savings
     }
     return result;
   }
